@@ -1,0 +1,33 @@
+.action-button {
+  min-width: 0;
+  font-weight: var(--addon-pay-action-font-weight, 700);
+  font-size: var(--addon-pay-action-font-size, 18px) !important;
+  line-height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  min-height: var(--addon-pay-action-min-height, 54px);
+  border-radius: var(--addon-pay-action-radius, 14px) !important;
+  flex: 1;
+  margin: 0 auto;
+  max-width: max-content;
+  padding: var(--addon-pay-action-padding, 20px);
+
+  & > span {
+    max-width: 100%;
+  }
+
+  &--full-width {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  &--primary {
+    color: var(--addon-pay-primary-action-color, #060606) !important;
+    background: var(--addon-pay-primary-action-bg, #25DE7F)  !important;
+  }
+
+  &--secondary {
+    color: var(--addon-pay-secondary-action-color, #FFFFFF) !important;
+    background: var(--addon-pay-secondary-action-bg, rgba(164, 164, 164, 0.2)) !important;
+  }
+}

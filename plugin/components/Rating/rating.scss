@@ -1,0 +1,24 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  position: relative;
+
+  &-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &--main {
+    color: var(--addon-pay-ratting-icon-bg, #FFD572);
+
+    &:hover {
+      color: var(--addon-pay-ratting-icon-bg, #FFD572);
+    }
+  }
+}

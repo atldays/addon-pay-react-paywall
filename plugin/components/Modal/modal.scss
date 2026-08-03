@@ -1,0 +1,18 @@
+.modal {
+  background: var(--addon-pay-modal-bg, #020013);
+
+  &__close-button {
+    top: 20px;
+    inset-inline-end: 20px !important;
+
+    &:hover {
+      background: transparent !important;
+    }
+  }
+
+  &__children {
+    overflow: hidden;
+    flex: 1;
+    justify-content: center;
+  }
+}

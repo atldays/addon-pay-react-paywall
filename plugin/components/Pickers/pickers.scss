@@ -1,0 +1,47 @@
+$breakpoint: 550px;
+
+.pickers {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px;
+
+  @media (max-width: #{$breakpoint}) {
+    flex-direction: column;
+  }
+
+  &__picker {
+    @media (max-width: #{$breakpoint}) {
+      &:last-child {
+        margin: 0 20px;
+      }
+    }
+
+    &-content {
+
+      @media (max-width: #{$breakpoint}) {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px !important;
+      }
+    }
+
+    &-tag {
+      color: var(--addon-pay-picker-tag-color, #060606);
+      background: var(--addon-pay-picker-tag-bg, #25DE7F);
+      font-size: var(--addon-pay-picker-tag-font-size, 10px);
+      border-radius: var(--addon-pay-picker-tag-radius, 20px);
+    }
+
+    &-description {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
+      @media (max-width: #{$breakpoint}) {
+        flex-direction: column-reverse;
+        align-items: end;
+      }
+    }
+  }
+}

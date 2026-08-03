@@ -1,0 +1,46 @@
+.features-modal {
+
+  &__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 30px;
+    padding: 0 20px;
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+      padding: 0 30px;
+      row-gap: 20px;
+    }
+  }
+
+  &__feature {
+    display: flex;
+    gap: 4px;
+
+    @media (max-width: 420px) {
+      gap: 8px;
+    }
+
+    &-icon {
+      min-width: 18px;
+      overflow: visible;
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 130%;
+      color: #F6F6F6;
+      padding-bottom: 4px;
+    }
+
+    &-description {
+      font-size: 13px;
+      line-height: 130%;
+      color: #90AAB9;
+    }
+  }
+}
