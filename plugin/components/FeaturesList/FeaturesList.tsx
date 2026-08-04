@@ -36,7 +36,7 @@ const FeaturesList = (props: FeaturesListProps) => {
     const [leftFeatures, rightFeatures] = useMemo(() => {
         const features = Array.from({length: shortFeaturesCount}, (_, index) =>
             // @ts-ignore
-            t(`addon-pay.feature_${index + 1}.title`)
+            t(`addon_pay.feature_${index + 1}.title`)
         );
 
         const leftCount = Math.ceil(features.length / 2);
