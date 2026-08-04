@@ -1,0 +1,38 @@
+.offer-modal {
+
+  &__picker {
+    flex: 0;
+    margin: 20px;
+
+    &-title {
+      text-align: center;
+    }
+
+    &-subtitle {
+      display: flex;
+      gap: 4px;
+
+      & > span:first-child {
+        text-decoration: line-through;
+        color: #91A7B4
+      }
+    }
+
+    &-tag {
+      color: #060606;
+      background: #25DE7F;
+      font-size: 10px;
+      border-radius: 20px;
+    }
+
+    &-content {
+      align-items: center;
+    }
+
+    &-description {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "addon-pay-react-paywall",
+  "version": "0.0.1",
+  "description": "React Paywall for Addon Bone",
+  "keywords": [
+    "adnbn",
+    "paywall",
+    "plugin"
+  ],
+  "license": "BUSL‑1.1",
+  "files": [
+    "plugin",
+    "dist-types"
+  ],
+  "types": "./dist-types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist-types/index.d.ts",
+      "default": "./plugin/index.ts"
+    },
+    "./react": {
+      "types": "./dist-types/provider/index.d.ts",
+      "default": "./plugin/provider/index.ts"
+    },
+    "./page": {
+      "types": "./dist-types/page.d.ts",
+      "default": "./plugin/page.tsx"
+    },
+    "./locales/*": "./plugin/locales/*.yml"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build:types": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build:types"
+  },
+  "dependencies": {
+    "@addon-core/browser": "^0.7.0",
+    "@addon-core/storage": "^0.6.0",
+    "canvas-confetti": "^1.9.4",
+    "date-fns": "^4.4.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/lodash": "^4.14.175",
+    "@types/react": "^19.0",
+    "@types/react-dom": "^19.0",
+    "addon-ui": "^0.11.0",
+    "adnbn": "^0.7.0",
+    "prettier": "^3.5.3"
+  },
+  "peerDependencies": {
+    "addon-ui": ">=0.11.0",
+    "adnbn": ">=0.7.0",
+    "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+    "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
+  }
+}

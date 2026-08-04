@@ -1,0 +1,32 @@
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 24px;
+
+  &__description {
+    color: var(--addon-pay-actions-description-color, #EEEEEE);
+    font-size: var(--addon-pay-actions-description-font-size, 12px);
+    text-align: center;
+  }
+
+  &__wrap {
+    display: flex;
+    gap: 8px;
+
+    @media (max-width: 550px) {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.action {
+  &__note {
+    color: var(--addon-pay-action-note-color, #FCFCFC);
+    font-size: var(--addon-pay-action-note-font-size, 12px);
+    font-weight: var(--addon-pay-action-note-font-weight, 400);
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+  }
+}

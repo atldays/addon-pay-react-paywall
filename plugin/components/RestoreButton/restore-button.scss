@@ -1,0 +1,12 @@
+.restore-button {
+  position: absolute;
+  top: 20px;
+  margin-inline-start: 20px;
+  border-radius: var(--addon-pay-restore-radius, 8px);
+  padding: var(--addon-pay-restore-padding, 6px 12px);
+  background: var(--addon-pay-restore-bg, rgba(191, 191, 191, 0.2)) !important;
+  color: var(--addon-pay-restore-color, #FFFFFF);
+  font-size: var(--addon-pay-restore-font-size, 12px);
+  height: auto;
+  max-width: max-content;
+}

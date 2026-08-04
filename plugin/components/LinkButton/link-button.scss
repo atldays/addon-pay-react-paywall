@@ -1,0 +1,22 @@
+.link-button {
+  padding: 0 !important;
+  color: var(--addon-pay-link-button-color, #F6F6F6) !important;
+  font-weight: var(--addon-pay-link-button-font-weight 400);
+  height: 17px;
+
+  & > span {
+    max-width: none;
+  }
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+  &--as-text {
+    cursor: default !important;
+
+    &:active {
+      transform: scale(1) !important;
+    }
+  }
+}
