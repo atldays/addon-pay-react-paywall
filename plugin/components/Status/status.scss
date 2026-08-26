@@ -17,6 +17,6 @@
 
   &--error {
     color: var(--addon-pay-status-error-color, #FF6565);
-    background: var(--addon-pay-status-error-color, rgba(47, 9, 9, 0.4));
+    background: var(--addon-pay-status-error-bg, rgba(47, 9, 9, 0.4));
   }
 }

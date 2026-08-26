@@ -1,0 +1,7 @@
+.tag {
+  color: var(--addon-pay-tag-color, #060606);
+  background: var(--addon-pay-tag-bg, var(--primary-color));
+  font-size: var(--addon-pay-tag-font-size, 10px);
+  font-weight: var(--addon-pay-tag-font-weight, 400);
+  border-radius: var(--addon-pay-tag-radius, 20px);
+}

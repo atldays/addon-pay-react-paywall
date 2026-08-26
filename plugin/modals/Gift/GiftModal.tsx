@@ -78,7 +78,7 @@ const GiftModal = forwardRef<ModalActions, GiftModalProps>((props, ref) => {
 
                 <Actions
                     primaryLabel={actionText}
-                    description={t("addon_pay.modals.gift.description", {name: t("addon_pay.ext_name").replace('!', '$')})}
+                    description={t("addon_pay.modals.gift.description", {name: t("addon_pay.ext_name")}).replace('!', '$')}
                     onPrimaryClick={handlePrimaryAction}
                 />
             </Scroll>

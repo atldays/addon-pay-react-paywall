@@ -27,8 +27,9 @@
     align-items: center;
     gap: 2px;
 
-    & > span {
+    &-icon {
       margin-top: 2px;
+      display: var(--addon-pay-badge-icon-display, flex) !important;
     }
   }
 }

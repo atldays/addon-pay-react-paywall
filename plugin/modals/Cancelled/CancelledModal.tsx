@@ -1,6 +1,5 @@
 import React, {forwardRef, memo, useCallback, useMemo} from "react";
 
-
 import {useLocale} from "adnbn/locale/react";
 
 import {useForwardedRef} from "../../hooks";
@@ -22,6 +21,8 @@ import {
 import {useAddonPay} from "../../provider";
 import {getDateString} from "../../utils";
 import {SubscriptionPlan} from "../../types";
+
+import styles from "./cancelled-modal.scss";
 
 export interface BeforeCancelModalProps extends Partial<ModalProps> {
 
@@ -64,7 +65,7 @@ const CancelledModal = forwardRef<ModalActions, BeforeCancelModalProps>((props, 
 
                     <FeaturesList bottom={34}/>
 
-                    <div style={{height: 1, width: '100%', backgroundColor: '#252424'}}/>
+                    <div className={styles['cancelled-modal__separator']}/>
 
                     <Subtitle
                         top={25}

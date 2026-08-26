@@ -4,9 +4,9 @@ import classnames from "classnames";
 
 import {useLocale} from "adnbn/locale/react";
 
-import {Tag, Truncate} from "addon-ui";
+import {Truncate} from "addon-ui";
 
-import {PlanPicker, Badge} from "../index";
+import {Badge, PlanPicker, Tag} from "../index";
 
 import {ComponentMargin, SubscriptionPlan} from "../../types";
 
@@ -69,7 +69,7 @@ const Pickers = forwardRef<PickersActions, PickersProps>((props, ref) => {
                 title={t("addon_pay.yearly")}
                 subTitle="$29.99"
                 description={<>
-                    <Tag className={styles["pickers__picker-tag"]}>{t("addon_pay.save_percentage", {value: "50"})}</Tag>
+                    <Tag>{t("addon_pay.save_percentage", {value: "50"})}</Tag>
                     <Truncate text={t("addon_pay.cost_in_week", {value: "0.58"}).replace("!", "$")}/>
                 </>}
                 badge={<Badge text={t("addon_pay.picker_badge")} height={17}/>}

@@ -14,18 +14,26 @@ $root: plan-picker;
     align-items: center;
     width: 100%;
     padding: 12px 16px;
-    border: 3px solid transparent;
-    box-shadow: 0 0 0 1px #525252;
+    border: var(--addon-pay-picker-card-active-border-width, 3px) solid transparent;
+    box-shadow: 0 0 0 1px  var(--addon-pay-picker-card-border-color, #525252);
+    background: var(--addon-pay-picker-card-bg, transparent);
     border-radius: var(--addon-pay-picker-card-radius, 14px);
     cursor: pointer;
     overflow: hidden;
-    transition: box-shadow var(--speed-color), background var(--speed-color);
+    transition: background var(--speed-color);
 
     .#{$root}--active & {
-      background: var(--addon-pay-picker-card-active-bg,
-              linear-gradient(#142417, #142417) padding-box,
-              linear-gradient(90deg, #21D889 0%, #21D6D9 100%) border-box);
       box-shadow: 0 0 0 1px transparent;
+      background: (
+              linear-gradient(90deg,
+                      var(--addon-pay-picker-card-active-bg, #142417) 0%,
+                      var(--addon-pay-picker-card-active-bg, #142417) 100%
+              ) padding-box,
+              linear-gradient(90deg,
+                      var(--addon-pay-picker-card-active-border-color-from, #21D889) 0%,
+                      var(--addon-pay-picker-card-active-border-color-to, #21D6D9) 100%
+              ) border-box
+      );
     }
   }
 

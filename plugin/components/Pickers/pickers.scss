@@ -26,13 +26,6 @@ $breakpoint: 550px;
       }
     }
 
-    &-tag {
-      color: var(--addon-pay-picker-tag-color, #060606);
-      background: var(--addon-pay-picker-tag-bg, #25DE7F);
-      font-size: var(--addon-pay-picker-tag-font-size, 10px);
-      border-radius: var(--addon-pay-picker-tag-radius, 20px);
-    }
-
     &-description {
       display: flex;
       gap: 5px;
