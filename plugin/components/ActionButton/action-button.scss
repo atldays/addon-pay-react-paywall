@@ -22,7 +22,7 @@
 
   &--primary {
     color: var(--addon-pay-primary-action-color, #060606) !important;
-    background: var(--addon-pay-primary-action-bg, #25DE7F)  !important;
+    background: var(--addon-pay-primary-action-bg, var(--primary-color))  !important;
   }
 
   &--secondary {

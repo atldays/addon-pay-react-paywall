@@ -1,6 +1,6 @@
 import React, {forwardRef, memo, useCallback} from "react";
 
-import {Tag, Truncate} from "addon-ui";
+import {Truncate} from "addon-ui";
 
 import {useLocale} from "adnbn/locale/react";
 
@@ -18,6 +18,7 @@ import {
     PlanPicker,
     Scroll,
     Subtitle,
+    Tag,
     Title
 } from "../../components";
 
@@ -72,8 +73,7 @@ const OfferModal = forwardRef<ModalActions, OfferModalProps>((props, ref) => {
                         </div>}
                     description={
                         <div className={styles["offer-modal__picker-description"]}>
-                            <Tag
-                                className={styles["offer-modal__picker-tag"]}>{t("addon_pay.save_percentage", {value: "30"})}</Tag>
+                            <Tag>{t("addon_pay.save_percentage", {value: "30"})}</Tag>
                             <Truncate text={t("addon_pay.cost_in_week", {value: "0.40"}).replace("!", "$")}/>
                         </div>}
                     className={styles["offer-modal__picker"]}

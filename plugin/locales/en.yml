@@ -39,7 +39,7 @@ addon_pay:
       cancel: Cancel
 
   notes:
-      trusted_by_users: Trusted by 20,000 users
+      trusted_by_users: Trusted by {{count}} users
       no_credit_card_required: No credit card required
       no_risk_cancel_anytime: No risk. Cancel anytime
       your_gift_ends_automatically: Your gift ends automatically

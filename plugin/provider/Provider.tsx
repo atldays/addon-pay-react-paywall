@@ -180,16 +180,18 @@ const Provider = (props: ProviderProps) => {
 
     useEffect(() => {
         if (other.email && lastShowModalAt?.trialStart === undefined) {
-            changeStatus(SubscriptionStatus.Trial);
-            trialStartModal.current?.open();
-            other.update({lastShowModalAt: {trialStart: currentTime}});
+            setTimeout(() => {
+                changeStatus(SubscriptionStatus.Trial);
 
-            confetti({
-                particleCount: 100,
-                spread: 90,
-                origin: {x: 0.5, y: 0.2},
-                zIndex: 999999999,
-            });
+                trialStartModal.current?.open();
+                other.update({lastShowModalAt: {trialStart: currentTime}});
+                confetti({
+                    particleCount: 100,
+                    spread: 90,
+                    origin: {x: 0.5, y: 0.2},
+                    zIndex: 999999999,
+                });
+            }, 2000);
         }
     }, [other.email]);
 

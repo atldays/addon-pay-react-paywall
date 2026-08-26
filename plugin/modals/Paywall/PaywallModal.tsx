@@ -29,9 +29,11 @@ import {useAddonPay} from "../../provider";
 
 import {PaywallModalType, SubscriptionStatus} from "../../types";
 
-import styles from "./paywall-modal.scss";
+import {getAddonPayPaywallOptions} from "../../api";
 import {openAddEmailPage} from "../../page";
 import {getDiffDays} from "../../utils";
+
+import styles from "./paywall-modal.scss";
 
 export interface PaywallModalProps extends Partial<ModalProps> {
     type: string;
@@ -44,6 +46,8 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
     const [subtitle, setSubtitle] = useState('');
 
     const {currentTime} = useCurrentTime();
+
+    const {trustedUserCount = '20,000', trustedRating = 4.5} = getAddonPayPaywallOptions();
 
     const {t} = useLocale();
 
@@ -164,8 +168,8 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
                 <Scroll top={50}>
                     {type === PaywallModalType.Default &&
                         <div className={styles['paywall-modal__rating']}>
-                            <Rating rating={4.5}/>
-                            {t("addon_pay.notes.trusted_by_users")}
+                            <Rating rating={trustedRating}/>
+                            {t("addon_pay.notes.trusted_by_users", {count: trustedUserCount})}
                         </div>
                     }
 

@@ -46,7 +46,7 @@ const Modal = forwardRef<ModalActions, ModalProps>((props, ref) => {
                 className: styles['modal__close-button']
             }}
             className={classnames(styles['modal'], className)}
-            childrenClassName={classnames(styles['modal__children'], className)}
+            childrenClassName={classnames(styles['modal__children'], childrenClassName)}
             {...other}
         />
     );

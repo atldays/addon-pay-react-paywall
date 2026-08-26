@@ -1,6 +1,8 @@
 export interface AddonPayPaywallOptions {
     featuresCount: number;
     shortFeaturesCount: number;
+    trustedRating?: number;
+    trustedUserCount?: string;
     icons?: {
         successFeature?: string;
         errorFeature?: string;

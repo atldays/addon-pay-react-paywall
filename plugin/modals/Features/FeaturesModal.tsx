@@ -24,11 +24,10 @@ export interface FeaturesModalProps extends Partial<ModalProps> {
 
 }
 
-
 const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) => {
     const {t} = useLocale();
 
-    const {featuresCount} = getAddonPayPaywallOptions();
+    const {featuresCount, icons} = getAddonPayPaywallOptions();
 
     const [modalRef, setModalRef] = useForwardedRef(ref);
 
@@ -72,7 +71,12 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
                     <section className={styles['features-modal__features']}>
                         {features.map(({title, description}) => (
                             <div className={styles['features-modal__feature']} key={title}>
-                                <Icon name="check" size={18} className={styles['features-modal__feature-icon']}/>
+                                {icons?.successFeature &&
+                                    <Icon
+                                        name={icons.successFeature} size={18}
+                                        className={styles['features-modal__feature-icon']}
+                                    />
+                                }
                                 <div>
                                     <h3 className={styles['features-modal__feature-title']}>{title}</h3>
                                     <p className={styles['features-modal__feature-description']}>{description}</p>

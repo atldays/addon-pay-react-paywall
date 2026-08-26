@@ -30,7 +30,7 @@ const Title = (props: TitleProps) => {
 
     const {t} = useLocale();
 
-    const {icons} = getAddonPayPaywallOptions()
+    const {icons} = getAddonPayPaywallOptions();
 
     if (text.trim().length === 0) return;
 
@@ -45,7 +45,13 @@ const Title = (props: TitleProps) => {
             </h1>
             {showPro &&
                 <div className={styles['title__after']}>
-                    {icons?.beforeBadge && <Icon name={icons.beforeBadge} size={14}/>}
+                    {icons?.beforeBadge &&
+                        <Icon
+                            className={styles['title__after-icon']}
+                            name={icons.beforeBadge}
+                            size={14}
+                        />
+                    }
                     <span>{t("addon_pay.paid")}</span>
                 </div>
             }

@@ -80,7 +80,7 @@ const GiftEndModal = forwardRef<ModalActions, GiftEndModalProps>((props, ref) =>
                     primaryLabel={t("addon_pay.modals.gift_end.primary_action")}
                     secondaryLabel={t("addon_pay.modals.gift_end.secondary_action")}
                     secondaryNote={t("addon_pay.modals.gift_end.secondary_action_note")}
-                    description={t("addon_pay.modals.gift_end.description", {name: t("addon_pay.ext_name").replace('!', '$')})}
+                    description={t("addon_pay.modals.gift_end.description", {name: t("addon_pay.ext_name")}).replace('!', '$')}
                     onPrimaryClick={handlePrimaryAction}
                     onSecondaryClick={handleSecondaryAction}
                 />

@@ -16,7 +16,7 @@ interface DescriptionProps extends ComponentProps<'span'> {
 const Badge = (props: DescriptionProps) => {
     const {text, height, className, style, ...other} = props;
 
-    const {icons} = getAddonPayPaywallOptions()
+    const {icons} = getAddonPayPaywallOptions();
 
     return (
         <span
@@ -24,7 +24,13 @@ const Badge = (props: DescriptionProps) => {
             style={{...style, height}}
             {...other}
         >
-            {icons?.beforeBadge && <Icon name={icons.beforeBadge} size={14}/>}
+            {icons?.beforeBadge &&
+                <Icon
+                    className={styles['badge__icon']}
+                    name={icons.beforeBadge}
+                    size={14}
+                />
+            }
             <span>{text}</span>
         </span>
     );

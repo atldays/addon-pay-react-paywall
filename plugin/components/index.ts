@@ -12,4 +12,5 @@ export * from "./RestoreButton";
 export * from "./Scroll";
 export * from "./Status";
 export * from "./Subtitle";
+export * from "./Tag";
 export * from "./Title";

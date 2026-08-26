@@ -169,7 +169,9 @@ declare module "adnbn/locale" {
         },
         "addon_pay.notes.trusted_by_users": {
             "plural": false,
-            "substitutions": []
+            "substitutions": [
+                "count"
+            ]
         },
         "addon_pay.notes.no_credit_card_required": {
             "plural": false,
