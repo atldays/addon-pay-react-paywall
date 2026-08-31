@@ -7,7 +7,20 @@
     "paywall",
     "plugin"
   ],
-  "license": "BUSL‑1.1",
+  "license": "BUSL-1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atldays/addon-pay-react-paywall.git"
+  },
+  "homepage": "https://github.com/atldays/addon-pay-react-paywall#readme",
+  "bugs": {
+    "url": "https://github.com/atldays/addon-pay-react-paywall/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "provenance": true
+  },
   "files": [
     "plugin",
     "dist-types"
@@ -40,6 +53,8 @@
     "lint:staged": "lint-staged",
     "commitlint": "commitlint",
     "commitlint:branch": "commitlint --from origin/main --to HEAD --verbose",
+    "release": "release-it",
+    "release:dry-run": "release-it --dry-run --ci",
     "prepublishOnly": "npm run build:types"
   },
   "dependencies": {
@@ -52,6 +67,7 @@
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
+    "@release-it/conventional-changelog": "^12.0.0",
     "@types/canvas-confetti": "^1.9.0",
     "@types/lodash": "^4.14.175",
     "@types/react": "^19.0",
@@ -61,6 +77,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.4.1",
     "prettier": "^3.5.3",
+    "release-it": "^21.0.2",
     "vitest": "^4.1.11"
   },
   "peerDependencies": {
