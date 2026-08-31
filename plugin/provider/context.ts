@@ -35,7 +35,7 @@ export const useSubscriptionStorage = () => {
 
     const changeStatus = useCallback(
         (status: SubscriptionStatus, plan?: SubscriptionPlan) => {
-            let value: SubscriptionStorageContract = {status};
+            const value: SubscriptionStorageContract = {status};
 
             const startAt = Date.now();
 

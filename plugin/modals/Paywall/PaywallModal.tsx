@@ -138,9 +138,9 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
     }, [gift, trialPreview, trial, pro]);
 
     useEffect(() => {
-        //@ts-ignore
+        // @ts-expect-error -- Locale keys are selected dynamically by the modal type.
         const title = t(`addon_pay.modals.paywall.${type}.title`);
-        //@ts-ignore
+        // @ts-expect-error -- Locale keys are selected dynamically by the modal type.
         const subtitle = t(`addon_pay.modals.paywall.${type}.subtitle`);
 
         setTitle(title);

@@ -147,7 +147,11 @@ const Provider = (props: ProviderProps) => {
         if (status === SubscriptionStatus.Pro) {
             if (proDiffDays !== undefined) {
                 if (proDiffDays > 0) {
-                    renewAfterEnd ? featuresModal.current?.open() : cancelledModal.current?.open();
+                    if (renewAfterEnd) {
+                        featuresModal.current?.open();
+                    } else {
+                        cancelledModal.current?.open();
+                    }
                 }
 
                 if (proDiffDays <= 0 && proDiffDays > -7) {

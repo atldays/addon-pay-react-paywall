@@ -28,7 +28,7 @@ const FeaturesList = (props: FeaturesListProps) => {
 
     const [leftFeatures, rightFeatures] = useMemo(() => {
         const features = Array.from({length: shortFeaturesCount}, (_, index) =>
-            // @ts-ignore
+            // @ts-expect-error -- Locale keys are generated dynamically.
             t(`addon_pay.feature_${index + 1}.title`)
         );
 

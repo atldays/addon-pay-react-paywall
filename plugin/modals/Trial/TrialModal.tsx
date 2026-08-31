@@ -41,16 +41,6 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
 
     const isTrialPreview = status === SubscriptionStatus.TrialPreview;
 
-    const titleText = useMemo(() => {
-        if (status === SubscriptionStatus.Trial && trial) {
-            return t("addon_pay.modals.trial.title");
-        }
-
-        if (status === SubscriptionStatus.TrialPreview && trialPreview) {
-            return t("addon_pay.modals.trial_preview.title");
-        }
-    }, [trial, trialPreview, status]);
-
     const subtitleText = useMemo(() => {
         if (status === SubscriptionStatus.Trial && trial) {
             return t("addon_pay.modals.trial.subtitle");

@@ -45,9 +45,9 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
 
     const features = useMemo(() => {
         return Array.from({length: featuresCount}, (_, index) => ({
-            //@ts-ignore
+            // @ts-expect-error -- Locale keys are generated dynamically.
             title: t(`addon_pay.feature_${index + 1}.title`),
-            //@ts-ignore
+            // @ts-expect-error -- Locale keys are generated dynamically.
             description: t(`addon_pay.feature_${index + 1}.description`),
         }));
     }, []);

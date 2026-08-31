@@ -30,7 +30,7 @@ export class SubscriptionStorage {
         await this.storage.remove(this.key);
     }
 
-    watch(options: StorageWatchOptions<StorageContract>): Function {
+    watch(options: StorageWatchOptions<StorageContract>): () => void {
         return this.storage.watch(options);
     }
 }

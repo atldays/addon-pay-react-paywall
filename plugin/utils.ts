@@ -9,7 +9,7 @@ export function getDiffDays(timestamp: number, currentTime: number): number {
 export function getDateString(timestamp: number): string {
     const date = new Date(timestamp);
 
-    // @ts-ignore
+    // @ts-expect-error -- Locale keys are generated dynamically from the month number.
     return t(`addon_pay.date_until.${date.getMonth() + 1}`, {
         day: date.getDate(),
         year: date.getFullYear(),

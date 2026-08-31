@@ -1,8 +1,8 @@
-import React, {forwardRef, memo, useCallback, useMemo, useRef} from "react";
+import React, {forwardRef, memo, useCallback, useRef} from "react";
 
 import {useLocale} from "adnbn/locale/react";
 
-import {useCurrentTime, useForwardedRef} from "../../hooks";
+import {useForwardedRef} from "../../hooks";
 
 import {
     Actions,
@@ -24,30 +24,19 @@ import {
 
 import {useAddonPay} from "../../provider";
 
-import {getDiffDays} from "../../utils";
-
 import {SubscriptionStatus} from "../../types";
 import {openAddEmailPage} from "../../page";
 
 export interface GiftEndModalProps extends Partial<ModalProps> {}
 
 const GiftEndModal = forwardRef<ModalActions, GiftEndModalProps>((props, ref) => {
-    const {t, choice} = useLocale();
+    const {t} = useLocale();
 
-    const {gift, changeStatus} = useAddonPay();
-    const {currentTime} = useCurrentTime();
+    const {changeStatus} = useAddonPay();
 
     const [modalRef, setModalRef] = useForwardedRef(ref);
 
     const pickersRef = useRef<PickersActions>(null);
-
-    const statusText = useMemo(() => {
-        if (gift) {
-            const count = getDiffDays(gift.endAt, currentTime);
-            const days = choice("addon_pay.days_with_count", count, {count});
-            return t("addon_pay.tags.gift_remaining", {value: days});
-        }
-    }, [gift, currentTime]);
 
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro, pickersRef.current?.getValue());
