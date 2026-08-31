@@ -35,4 +35,4 @@ export enum PaywallModalType {
     Default = 'default',
 }
 
-export const PluginName = "addon-pay-react-paywall";
+export const PluginName = "@addon-lab/plugin-paywall";
