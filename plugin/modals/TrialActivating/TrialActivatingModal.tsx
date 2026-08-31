@@ -6,16 +6,13 @@ import {Footer, LinkButton, Modal, ModalActions, ModalProps, Scroll} from "../..
 
 import styles from "./trial-activating-modal.scss";
 
-export interface TrialActivatingModalProps extends Partial<ModalProps> {
-
-}
+export interface TrialActivatingModalProps extends Partial<ModalProps> {}
 
 const TrialActivatingModal = forwardRef<ModalActions, TrialActivatingModalProps>((props, ref) => {
     const {t} = useLocale();
 
     return (
         <Modal {...props} ref={ref}>
-
             <Scroll>
                 <div className={styles["trial-activating-modal__container"]}>
                     <div className={styles["trial-activating-modal__title-wrap"]}>

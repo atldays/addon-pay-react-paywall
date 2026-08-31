@@ -25,7 +25,7 @@ export interface PlanPickerProps {
     onChange: (value: SubscriptionPlan) => void;
 }
 
-const PlanPicker: FC<PlanPickerProps> = (props) => {
+const PlanPicker: FC<PlanPickerProps> = props => {
     const {
         name,
         value,
@@ -50,9 +50,13 @@ const PlanPicker: FC<PlanPickerProps> = (props) => {
 
     return (
         <div
-            className={classnames(styles["plan-picker"], {
-                [styles["plan-picker--active"]]: checked
-            }, className)}
+            className={classnames(
+                styles["plan-picker"],
+                {
+                    [styles["plan-picker--active"]]: checked,
+                },
+                className
+            )}
             dir={dir}
         >
             {badge && <div className={styles["plan-picker__badge"]}>{badge}</div>}
@@ -68,12 +72,8 @@ const PlanPicker: FC<PlanPickerProps> = (props) => {
 
                 <div className={classnames(styles["plan-picker__content"], contentClassName)} dir={dir}>
                     <div className={classnames(styles["plan-picker__wrap"], wrapClassName)} dir={dir}>
-                        <div className={classnames(styles["plan-picker__title"], titleClassName)}>
-                            {title}
-                        </div>
-                        <div className={classnames(styles["plan-picker__subtitle"], subtitleClassName)}>
-                            {subTitle}
-                        </div>
+                        <div className={classnames(styles["plan-picker__title"], titleClassName)}>{title}</div>
+                        <div className={classnames(styles["plan-picker__subtitle"], subtitleClassName)}>{subTitle}</div>
                     </div>
 
                     <div className={classnames(styles["plan-picker__description"], descriptionClassName)}>

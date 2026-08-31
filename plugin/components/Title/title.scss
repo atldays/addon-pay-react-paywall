@@ -7,15 +7,15 @@
   gap: 8px;
 
   &__text {
-    color: var(--addon-pay-title-color, #EEEEEE);
+    color: var(--addon-pay-title-color, #eeeeee);
     font-size: var(--addon-pay-title-font-size, 28px);
     font-weight: var(--addon-pay-title-font-weight, 700);
     text-align: center;
   }
 
   &__after {
-    background: var(--addon-pay-title-after-bg, #F24F88);
-    color: var(--addon-pay-title-after-color, #FFFFFF);
+    background: var(--addon-pay-title-after-bg, #f24f88);
+    color: var(--addon-pay-title-after-color, #ffffff);
     font-size: var(--addon-pay-title-after-font-size, 12px);
     font-weight: var(--addon-pay-title-after-font-weight, 600);
     padding: var(--addon-pay-title-after-height, 2px 6px);

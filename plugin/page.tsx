@@ -24,11 +24,12 @@ export const openAddEmailPage = async (): Promise<void> => {
 
 // Page for testing email functioanality
 const Page = () => {
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = React.useState("");
 
     const handleAddEmail = useCallback(() => {
         if (value.trim().length) {
-            storage.update({email: value})
+            storage
+                .update({email: value})
                 .then(() => window.close())
                 .catch(console.error);
         }
@@ -37,15 +38,17 @@ const Page = () => {
     return (
         <UIProvider storage={true}>
             <LocaleProvider>
-                <div style={{
-                    height: '100vh',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
-                }}>
-                    <TextField value={value} onChange={(e) => setValue(e.target.value)}/>
+                <div
+                    style={{
+                        height: "100vh",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "10px",
+                    }}
+                >
+                    <TextField value={value} onChange={e => setValue(e.target.value)} />
                     <Button onClick={handleAddEmail}>Add email</Button>
                 </div>
             </LocaleProvider>

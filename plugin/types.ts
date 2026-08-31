@@ -8,31 +8,31 @@ export interface AddonPayPaywallOptions {
         errorFeature?: string;
         rating?: string;
         beforeLink?: string;
-        beforeBadge?: string
+        beforeBadge?: string;
     };
 }
 
 export interface ComponentMargin {
-    top?: number,
-    bottom?: number,
-    width?: string,
+    top?: number;
+    bottom?: number;
+    width?: string;
 }
 
 export enum SubscriptionStatus {
-    Free = 'free',
-    Gift = 'gift',
-    TrialPreview = 'trialPreview',
-    Trial = 'trial',
-    Pro = 'pro',
+    Free = "free",
+    Gift = "gift",
+    TrialPreview = "trialPreview",
+    Trial = "trial",
+    Pro = "pro",
 }
 
 export enum SubscriptionPlan {
-    Monthly = 'monthly',
-    Yearly = 'yearly',
+    Monthly = "monthly",
+    Yearly = "yearly",
 }
 
 export enum PaywallModalType {
-    Default = 'default',
+    Default = "default",
 }
 
 export const PluginName = "@addon-lab/plugin-paywall";

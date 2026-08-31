@@ -8,7 +8,7 @@ import {getAddonPayPaywallOptions} from "../../api";
 
 import styles from "./badge.scss";
 
-interface DescriptionProps extends ComponentProps<'span'> {
+interface DescriptionProps extends ComponentProps<"span"> {
     text: string;
     height?: number;
 }
@@ -19,18 +19,8 @@ const Badge = (props: DescriptionProps) => {
     const {icons} = getAddonPayPaywallOptions();
 
     return (
-        <span
-            className={classnames(styles['badge'], className)}
-            style={{...style, height}}
-            {...other}
-        >
-            {icons?.beforeBadge &&
-                <Icon
-                    className={styles['badge__icon']}
-                    name={icons.beforeBadge}
-                    size={14}
-                />
-            }
+        <span className={classnames(styles["badge"], className)} style={{...style, height}} {...other}>
+            {icons?.beforeBadge && <Icon className={styles["badge__icon"]} name={icons.beforeBadge} size={14} />}
             <span>{text}</span>
         </span>
     );

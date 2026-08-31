@@ -12,7 +12,7 @@ import {ComponentMargin, SubscriptionPlan} from "../../types";
 
 import styles from "./pickers.scss";
 
-export interface PickersProps extends ComponentProps<'section'>, ComponentMargin {
+export interface PickersProps extends ComponentProps<"section">, ComponentMargin {
     value?: SubscriptionPlan;
     defaultValue?: SubscriptionPlan;
     onChangeValue?: (value: SubscriptionPlan) => void;
@@ -38,9 +38,13 @@ const Pickers = forwardRef<PickersActions, PickersProps>((props, ref) => {
 
     const {t, dir} = useLocale();
 
-    useImperativeHandle(ref, () => ({
-        getValue: () => plan
-    }), [plan]);
+    useImperativeHandle(
+        ref,
+        () => ({
+            getValue: () => plan,
+        }),
+        [plan]
+    );
 
     return (
         <section
@@ -68,11 +72,13 @@ const Pickers = forwardRef<PickersActions, PickersProps>((props, ref) => {
                 checked={(value ?? plan) === SubscriptionPlan.Yearly}
                 title={t("addon_pay.yearly")}
                 subTitle="$29.99"
-                description={<>
-                    <Tag>{t("addon_pay.save_percentage", {value: "50"})}</Tag>
-                    <Truncate text={t("addon_pay.cost_in_week", {value: "0.58"}).replace("!", "$")}/>
-                </>}
-                badge={<Badge text={t("addon_pay.picker_badge")} height={17}/>}
+                description={
+                    <>
+                        <Tag>{t("addon_pay.save_percentage", {value: "50"})}</Tag>
+                        <Truncate text={t("addon_pay.cost_in_week", {value: "0.58"}).replace("!", "$")} />
+                    </>
+                }
+                badge={<Badge text={t("addon_pay.picker_badge")} height={17} />}
                 className={styles["pickers__picker"]}
                 contentClassName={styles["pickers__picker-content"]}
                 descriptionClassName={styles["pickers__picker-description"]}

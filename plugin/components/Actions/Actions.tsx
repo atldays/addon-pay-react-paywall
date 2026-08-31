@@ -8,7 +8,7 @@ import {ComponentMargin} from "../../types";
 
 import styles from "./actions.scss";
 
-export interface ActionsProps extends ComponentProps<'section'>, ComponentMargin {
+export interface ActionsProps extends ComponentProps<"section">, ComponentMargin {
     primaryLabel: string;
     secondaryLabel?: string;
     secondaryNote?: string;
@@ -38,14 +38,14 @@ const Actions = (props: ActionsProps) => {
 
     return (
         <section
-            className={classnames(styles['actions'], className)}
+            className={classnames(styles["actions"], className)}
             style={{marginTop: top, marginBottom: bottom, ...style}}
             {...other}
         >
-            {description && <span className={styles['actions__description']}>{description}</span>}
+            {description && <span className={styles["actions__description"]}>{description}</span>}
 
-            <div className={styles['actions__wrap']}>
-                {secondaryLabel &&
+            <div className={styles["actions__wrap"]}>
+                {secondaryLabel && (
                     <ActionButton
                         className={secondaryClassName}
                         type={ActionButtonType.Secondary}
@@ -53,13 +53,9 @@ const Actions = (props: ActionsProps) => {
                         title={secondaryLabel}
                     >
                         {secondaryLabel}
-                        {secondaryNote && (
-                            <div className={styles['action__note']}>
-                                {secondaryNote}
-                            </div>
-                        )}
+                        {secondaryNote && <div className={styles["action__note"]}>{secondaryNote}</div>}
                     </ActionButton>
-                }
+                )}
 
                 <ActionButton
                     className={primaryClassName}

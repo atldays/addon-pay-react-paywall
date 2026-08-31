@@ -61,28 +61,31 @@ const BeforeCancelModal = forwardRef<ModalActions, BeforeCancelModalProps>((prop
         <>
             <Modal {...other} ref={setModalRef} className={className}>
                 <Scroll>
-                    <Title bottom={10} text={t("addon_pay.modals.before_cancel.title")}/>
+                    <Title bottom={10} text={t("addon_pay.modals.before_cancel.title")} />
 
-                    {statusText && <Status bottom={28} text={statusText}/>}
+                    {statusText && <Status bottom={28} text={statusText} />}
 
-                    {hasDiscount &&
-                        <div className={styles['before-cancel-modal__lose-discount']}>
+                    {hasDiscount && (
+                        <div className={styles["before-cancel-modal__lose-discount"]}>
                             {t("addon_pay.modals.before_cancel.lose_discount")}
                         </div>
-                    }
+                    )}
 
                     <Subtitle
                         bottom={23}
-                        text={t("addon_pay.modals.before_cancel.subtitle", {date: pro?.endAt ? getDateString(pro.endAt) : ''})}
+                        text={t("addon_pay.modals.before_cancel.subtitle", {
+                            date: pro?.endAt ? getDateString(pro.endAt) : "",
+                        })}
                     />
 
-                    <FeaturesList bottom={30} type={FeaturesListType.Error}/>
+                    <FeaturesList bottom={30} type={FeaturesListType.Error} />
 
                     <Actions
                         primaryLabel={t("addon_pay.modals.before_cancel.primary_action")}
                         secondaryLabel={t("addon_pay.modals.before_cancel.secondary_action")}
                         onPrimaryClick={handlePrimaryAction}
-                        onSecondaryClick={handleSecondaryAction}/>
+                        onSecondaryClick={handleSecondaryAction}
+                    />
                 </Scroll>
 
                 <Footer>
@@ -93,11 +96,11 @@ const BeforeCancelModal = forwardRef<ModalActions, BeforeCancelModalProps>((prop
             </Modal>
 
             <Suspense>
-                <OfferModal ref={offerModal} className={className}/>
+                <OfferModal ref={offerModal} className={className} />
             </Suspense>
 
             <Suspense>
-                <CancelledModal ref={cancelledModal} className={className}/>
+                <CancelledModal ref={cancelledModal} className={className} />
             </Suspense>
         </>
     );

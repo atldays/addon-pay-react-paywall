@@ -17,7 +17,6 @@ $breakpoint: 550px;
     }
 
     &-content {
-
       @media (max-width: #{$breakpoint}) {
         flex-direction: row !important;
         align-items: center;

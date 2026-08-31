@@ -11,23 +11,16 @@ import styles from "./features-list.scss";
 import {getAddonPayPaywallOptions} from "../../api";
 
 export enum FeaturesListType {
-    Success = 'success',
-    Error = 'error',
+    Success = "success",
+    Error = "error",
 }
 
-interface FeaturesListProps extends ComponentProps<'section'>, ComponentMargin {
-    type?: FeaturesListType
+interface FeaturesListProps extends ComponentProps<"section">, ComponentMargin {
+    type?: FeaturesListType;
 }
 
 const FeaturesList = (props: FeaturesListProps) => {
-    const {
-        top,
-        bottom,
-        style,
-        className,
-        type = FeaturesListType.Success,
-        ...other
-    } = props;
+    const {top, bottom, style, className, type = FeaturesListType.Success, ...other} = props;
 
     const {t, dir} = useLocale();
 
@@ -41,36 +34,31 @@ const FeaturesList = (props: FeaturesListProps) => {
 
         const leftCount = Math.ceil(features.length / 2);
 
-        return [
-            features.slice(0, leftCount),
-            features.slice(leftCount),
-        ];
+        return [features.slice(0, leftCount), features.slice(leftCount)];
     }, []);
 
-    const iconName = type === FeaturesListType.Success
-        ? icons?.successFeature
-        : icons?.errorFeature;
+    const iconName = type === FeaturesListType.Success ? icons?.successFeature : icons?.errorFeature;
 
     return (
         <section
-            className={classnames(styles['features-list'], className)}
+            className={classnames(styles["features-list"], className)}
             style={{marginTop: top, marginBottom: bottom, ...style}}
             {...other}
         >
-            <div className={styles['features-list__wrap']} dir={dir}>
-                {leftFeatures.map((title) => (
-                    <div className={styles['feature']} key={title}>
-                        {iconName && <Icon name={iconName} size={18} className={styles['feature__icon']}/>}
-                        <span className={styles['feature__title']}>{title}</span>
+            <div className={styles["features-list__wrap"]} dir={dir}>
+                {leftFeatures.map(title => (
+                    <div className={styles["feature"]} key={title}>
+                        {iconName && <Icon name={iconName} size={18} className={styles["feature__icon"]} />}
+                        <span className={styles["feature__title"]}>{title}</span>
                     </div>
                 ))}
             </div>
 
-            <div className={styles['features-list__wrap']} dir={dir}>
-                {rightFeatures.map((title) => (
-                    <div className={styles['feature']} key={title}>
-                        {iconName && <Icon name={iconName} size={18} className={styles['feature__icon']}/>}
-                        <span className={styles['feature__title']}>{title}</span>
+            <div className={styles["features-list__wrap"]} dir={dir}>
+                {rightFeatures.map(title => (
+                    <div className={styles["feature"]} key={title}>
+                        {iconName && <Icon name={iconName} size={18} className={styles["feature__icon"]} />}
+                        <span className={styles["feature__title"]}>{title}</span>
                     </div>
                 ))}
             </div>

@@ -20,9 +20,7 @@ import {getAddonPayPaywallOptions} from "../../api";
 
 import styles from "./features-modal.scss";
 
-export interface FeaturesModalProps extends Partial<ModalProps> {
-
-}
+export interface FeaturesModalProps extends Partial<ModalProps> {}
 
 const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) => {
     const {t} = useLocale();
@@ -40,7 +38,7 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
             const dateString = getDateString(pro.endAt);
 
             return pro.plan === SubscriptionPlan.Yearly
-                ? t("addon_pay.tags.yearly_plan_renews", {date: dateString, value: '29.99'}).replace('!', '$')
+                ? t("addon_pay.tags.yearly_plan_renews", {date: dateString, value: "29.99"}).replace("!", "$")
                 : t("addon_pay.tags.monthly_plan_renews", {date: dateString});
         }
     }, [pro]);
@@ -62,24 +60,24 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
     return (
         <>
             <Modal {...props} ref={setModalRef}>
-
                 <Scroll>
-                    <Title bottom={10} text={t("addon_pay.modals.features.title")} showPro={true}/>
+                    <Title bottom={10} text={t("addon_pay.modals.features.title")} showPro={true} />
 
-                    {statusText && <Status bottom={28} text={statusText}/>}
+                    {statusText && <Status bottom={28} text={statusText} />}
 
-                    <section className={styles['features-modal__features']}>
+                    <section className={styles["features-modal__features"]}>
                         {features.map(({title, description}) => (
-                            <div className={styles['features-modal__feature']} key={title}>
-                                {icons?.successFeature &&
+                            <div className={styles["features-modal__feature"]} key={title}>
+                                {icons?.successFeature && (
                                     <Icon
-                                        name={icons.successFeature} size={18}
-                                        className={styles['features-modal__feature-icon']}
+                                        name={icons.successFeature}
+                                        size={18}
+                                        className={styles["features-modal__feature-icon"]}
                                     />
-                                }
+                                )}
                                 <div>
-                                    <h3 className={styles['features-modal__feature-title']}>{title}</h3>
-                                    <p className={styles['features-modal__feature-description']}>{description}</p>
+                                    <h3 className={styles["features-modal__feature-title"]}>{title}</h3>
+                                    <p className={styles["features-modal__feature-description"]}>{description}</p>
                                 </div>
                             </div>
                         ))}
@@ -96,7 +94,7 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
             </Modal>
 
             <Suspense>
-                <BeforeCancelModal ref={beforeCancelModal} statusText={statusText} className={props.className}/>
+                <BeforeCancelModal ref={beforeCancelModal} statusText={statusText} className={props.className} />
             </Suspense>
         </>
     );

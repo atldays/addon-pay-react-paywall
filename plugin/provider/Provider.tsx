@@ -1,6 +1,6 @@
 import React, {PropsWithChildren, Suspense, useCallback, useEffect, useMemo, useRef, useState} from "react";
 
-import {isSameDay} from 'date-fns';
+import {isSameDay} from "date-fns";
 
 import confetti from "canvas-confetti";
 
@@ -16,7 +16,7 @@ import {
     PaywallModal,
     TrialEndModal,
     TrialModal,
-    TrialStartModal
+    TrialStartModal,
 } from "../modals";
 import {ModalActions} from "../components";
 import {getDiffDays} from "../utils";
@@ -26,8 +26,8 @@ import {SubscriptionContext, useSubscriptionStorage} from "./context";
 import {PaywallModalType, SubscriptionStatus} from "../types";
 
 export interface ProviderProps extends PropsWithChildren {
-    resetPaidOptions: () => Promise<void>,
-    modalClassName?: string,
+    resetPaidOptions: () => Promise<void>;
+    modalClassName?: string;
 }
 
 const Provider = (props: ProviderProps) => {
@@ -89,15 +89,18 @@ const Provider = (props: ProviderProps) => {
         paywallModal.current?.open();
     }, []);
 
-    const checkAndOpenPaywall = useCallback((type?: string) => {
-        setPaywallModalType(type || PaywallModalType.Default);
+    const checkAndOpenPaywall = useCallback(
+        (type?: string) => {
+            setPaywallModalType(type || PaywallModalType.Default);
 
-        if (!isSubscribed) {
-            paywallModal.current?.open();
-        }
+            if (!isSubscribed) {
+                paywallModal.current?.open();
+            }
 
-        return !isSubscribed;
-    }, [isSubscribed]);
+            return !isSubscribed;
+        },
+        [isSubscribed]
+    );
 
     // Only open the necessary modals based on the subscription status and remaining days
     const action = useCallback(() => {
@@ -144,9 +147,7 @@ const Provider = (props: ProviderProps) => {
         if (status === SubscriptionStatus.Pro) {
             if (proDiffDays !== undefined) {
                 if (proDiffDays > 0) {
-                    renewAfterEnd
-                        ? featuresModal.current?.open()
-                        : cancelledModal.current?.open();
+                    renewAfterEnd ? featuresModal.current?.open() : cancelledModal.current?.open();
                 }
 
                 if (proDiffDays <= 0 && proDiffDays > -7) {
@@ -164,7 +165,16 @@ const Provider = (props: ProviderProps) => {
             openPaywall(PaywallModalType.Default);
             return;
         }
-    }, [currentTime, status, giftDiffDays, trialPreviewDiffDays, trialDiffDays, proDiffDays, renewAfterEnd, openPaywall]);
+    }, [
+        currentTime,
+        status,
+        giftDiffDays,
+        trialPreviewDiffDays,
+        trialDiffDays,
+        proDiffDays,
+        renewAfterEnd,
+        openPaywall,
+    ]);
 
     const isHasOpenedModal = () => {
         return !!(
@@ -204,7 +214,11 @@ const Provider = (props: ProviderProps) => {
         }
 
         // TRIAL PREVIEW has expired
-        if (status === SubscriptionStatus.TrialPreview && trialPreviewDiffDays !== undefined && trialPreviewDiffDays <= 0) {
+        if (
+            status === SubscriptionStatus.TrialPreview &&
+            trialPreviewDiffDays !== undefined &&
+            trialPreviewDiffDays <= 0
+        ) {
             changeStatus(SubscriptionStatus.Free);
             resetPaidOptions().catch(console.error);
         }
@@ -244,7 +258,8 @@ const Provider = (props: ProviderProps) => {
         }
     }, [currentTime]);
 
-    const contextValue = useMemo(() => ({
+    const contextValue = useMemo(
+        () => ({
             action,
             openPaywall,
             checkAndOpenPaywall,
@@ -260,64 +275,65 @@ const Provider = (props: ProviderProps) => {
             changeStatus,
             renewAfterEnd,
             ...other,
-        }
-    ), [
-        action,
-        openPaywall,
-        checkAndOpenPaywall,
-        resetPaidOptions,
-        status,
-        gift,
-        trialPreview,
-        trial,
-        pro,
-        isSubscribed,
-        lastShowModalAt,
-        changeStatus,
-        renewAfterEnd
-    ]);
+        }),
+        [
+            action,
+            openPaywall,
+            checkAndOpenPaywall,
+            resetPaidOptions,
+            status,
+            gift,
+            trialPreview,
+            trial,
+            pro,
+            isSubscribed,
+            lastShowModalAt,
+            changeStatus,
+            renewAfterEnd,
+        ]
+    );
 
     return (
         <SubscriptionContext.Provider value={contextValue}>
             {children}
             <Suspense>
-                <PaywallModal ref={paywallModal} type={paywallModalType} className={modalClassName}/>
+                <PaywallModal ref={paywallModal} type={paywallModalType} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <FeaturesModal ref={featuresModal} className={modalClassName}/>
+                <FeaturesModal ref={featuresModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <GiftModal ref={giftModal} className={modalClassName}/>
+                <GiftModal ref={giftModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <GiftEndModal ref={giftEndModal} className={modalClassName}/>
+                <GiftEndModal ref={giftEndModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <TrialStartModal ref={trialStartModal} className={modalClassName}/>
+                <TrialStartModal ref={trialStartModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <TrialModal ref={trialModal} className={modalClassName}/>
+                <TrialModal ref={trialModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <TrialEndModal ref={trialEndModal} className={modalClassName}/>
+                <TrialEndModal ref={trialEndModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <CancelledModal ref={cancelledModal} className={modalClassName}/>
+                <CancelledModal ref={cancelledModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <BillingGraceModal ref={billingGraceModal} className={modalClassName}/>
+                <BillingGraceModal ref={billingGraceModal} className={modalClassName} />
             </Suspense>
 
             <Suspense>
-                <BillingFailedModal ref={billingFailedModal} className={modalClassName}/>
+                <BillingFailedModal ref={billingFailedModal} className={modalClassName} />
             </Suspense>
         </SubscriptionContext.Provider>
     );

@@ -5,7 +5,7 @@
   padding: 0 24px;
 
   &__description {
-    color: var(--addon-pay-actions-description-color, #EEEEEE);
+    color: var(--addon-pay-actions-description-color, #eeeeee);
     font-size: var(--addon-pay-actions-description-font-size, 12px);
     font-weight: var(--addon-pay-actions-description-font-weight, 400);
     text-align: center;
@@ -23,7 +23,7 @@
 
 .action {
   &__note {
-    color: var(--addon-pay-action-note-color, #FCFCFC);
+    color: var(--addon-pay-action-note-color, #fcfcfc);
     font-size: var(--addon-pay-action-note-font-size, 12px);
     font-weight: var(--addon-pay-action-note-font-weight, 400);
     overflow: hidden;

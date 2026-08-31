@@ -1,28 +1,54 @@
 .before-cancel-modal {
-
   &__lose-discount {
-    color:  var(--addon-pay-lose-discount-color, #FCFCFC);
-    font-weight:  var(--addon-pay-lose-discount-font-weight, 400);
-    font-size:  var(--addon-pay-lose-discount-font-size, 15px);
+    color: var(--addon-pay-lose-discount-color, #fcfcfc);
+    font-weight: var(--addon-pay-lose-discount-font-weight, 400);
+    font-size: var(--addon-pay-lose-discount-font-size, 15px);
     line-height: 140%;
     letter-spacing: 0;
     text-align: center;
 
     background: (
-            linear-gradient(90deg,
-                    var(--addon-pay-lose-discount-bg, var(--addon-pay-picker-card-active-bg, #142417)) 0%,
-                    var(--addon-pay-lose-discount-bg, var(--addon-pay-picker-card-active-bg, #142417)) 100%
-            ) padding-box,
-            linear-gradient(90deg,
-                    var(--addon-pay-lose-discount-border-color-from, var(--addon-pay-picker-card-active-border-color-from, #21D889)) 0%,
-                    var(--addon-pay-lose-discount-border-color-to, var(--addon-pay-picker-card-active-border-color-to, #21D6D9)) 100%
-            ) border-box
+      linear-gradient(
+          90deg,
+          var(
+              --addon-pay-lose-discount-bg,
+              var(--addon-pay-picker-card-active-bg, #142417)
+            )
+            0%,
+          var(
+              --addon-pay-lose-discount-bg,
+              var(--addon-pay-picker-card-active-bg, #142417)
+            )
+            100%
+        )
+        padding-box,
+      linear-gradient(
+          90deg,
+          var(
+              --addon-pay-lose-discount-border-color-from,
+              var(--addon-pay-picker-card-active-border-color-from, #21d889)
+            )
+            0%,
+          var(
+              --addon-pay-lose-discount-border-color-to,
+              var(--addon-pay-picker-card-active-border-color-to, #21d6d9)
+            )
+            100%
+        )
+        border-box
     );
 
     width: var(--addon-pay-lose-discount-width, 75%);
     margin: 0 auto 13px auto;
-    border: var(--addon-pay-lose-discount-border-width, var(--addon-pay-picker-card-active-border-width, 3px)) solid transparent;
-    border-radius: var(--addon-pay-lose-discount-radius, var(--addon-pay-picker-card-radius, 14px));
+    border: var(
+        --addon-pay-lose-discount-border-width,
+        var(--addon-pay-picker-card-active-border-width, 3px)
+      )
+      solid transparent;
+    border-radius: var(
+      --addon-pay-lose-discount-radius,
+      var(--addon-pay-picker-card-radius, 14px)
+    );
     padding: 12px 16px;
   }
 }

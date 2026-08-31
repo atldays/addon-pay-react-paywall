@@ -4,9 +4,9 @@ import _merge from "lodash/merge";
 
 import {SubscriptionStorageContract} from "./types";
 
-const storageKey = 'addon-pay';
+const storageKey = "addon-pay";
 
-export type StorageContract = Record<typeof storageKey, SubscriptionStorageContract>
+export type StorageContract = Record<typeof storageKey, SubscriptionStorageContract>;
 
 export class SubscriptionStorage {
     private storage = new Storage<StorageContract>();
@@ -21,7 +21,7 @@ export class SubscriptionStorage {
     }
 
     async update(value: Partial<SubscriptionStorageContract>): Promise<SubscriptionStorageContract | undefined> {
-        return this.storage.update(this.key, (prev) => {
+        return this.storage.update(this.key, prev => {
             return _merge({}, prev, value);
         });
     }

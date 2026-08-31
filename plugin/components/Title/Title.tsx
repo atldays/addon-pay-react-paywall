@@ -11,22 +11,13 @@ import {ComponentMargin} from "../../types";
 
 import styles from "./title.scss";
 
-interface TitleProps extends ComponentProps<'div'>, ComponentMargin {
-    text: string,
-    showPro?: boolean,
+interface TitleProps extends ComponentProps<"div">, ComponentMargin {
+    text: string;
+    showPro?: boolean;
 }
 
 const Title = (props: TitleProps) => {
-    const {
-        text,
-        showPro,
-        top,
-        bottom,
-        width,
-        style,
-        className,
-        ...other
-    } = props;
+    const {text, showPro, top, bottom, width, style, className, ...other} = props;
 
     const {t} = useLocale();
 
@@ -36,25 +27,19 @@ const Title = (props: TitleProps) => {
 
     return (
         <div
-            className={classnames(styles['title'], className)}
+            className={classnames(styles["title"], className)}
             style={{marginTop: top, marginBottom: bottom, width, ...style}}
             {...other}
         >
-            <h1 className={styles['title__text']}>
-                {text}
-            </h1>
-            {showPro &&
-                <div className={styles['title__after']}>
-                    {icons?.beforeBadge &&
-                        <Icon
-                            className={styles['title__after-icon']}
-                            name={icons.beforeBadge}
-                            size={14}
-                        />
-                    }
+            <h1 className={styles["title__text"]}>{text}</h1>
+            {showPro && (
+                <div className={styles["title__after"]}>
+                    {icons?.beforeBadge && (
+                        <Icon className={styles["title__after-icon"]} name={icons.beforeBadge} size={14} />
+                    )}
                     <span>{t("addon_pay.paid")}</span>
                 </div>
-            }
+            )}
         </div>
     );
 };

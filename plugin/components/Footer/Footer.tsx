@@ -5,23 +5,14 @@ import {ComponentMargin} from "../../types";
 
 import styles from "./footer.scss";
 
-interface FooterProps extends ComponentProps<'footer'>, ComponentMargin {
-
-}
+interface FooterProps extends ComponentProps<"footer">, ComponentMargin {}
 
 const Footer = (props: FooterProps) => {
-    const {
-        top,
-        bottom,
-        style,
-        className,
-        children,
-        ...other
-    } = props;
+    const {top, bottom, style, className, children, ...other} = props;
 
     return (
         <footer
-            className={classnames(styles['footer'], className)}
+            className={classnames(styles["footer"], className)}
             style={{marginTop: top, marginBottom: bottom, ...style}}
             {...other}
         >

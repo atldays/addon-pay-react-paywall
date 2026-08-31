@@ -13,24 +13,22 @@ export interface LinkButtonProps extends ButtonProps {
     showIcon?: boolean;
 }
 
-const LinkButton: FC<LinkButtonProps> = (props) => {
-    const {
-        underline = true,
-        showIcon,
-        asText,
-        className,
-        ...other
-    } = props;
+const LinkButton: FC<LinkButtonProps> = props => {
+    const {underline = true, showIcon, asText, className, ...other} = props;
 
     const {icons} = getAddonPayPaywallOptions();
 
     return (
         <Button
-            className={classnames(styles['link-button'], {
-                [styles['link-button--underline']]: underline,
-                [styles['link-button--as-text']]: asText,
-            }, className)}
-            before={showIcon && icons?.beforeLink && <Icon name={icons.beforeLink} size={14}/>}
+            className={classnames(
+                styles["link-button"],
+                {
+                    [styles["link-button--underline"]]: underline,
+                    [styles["link-button--as-text"]]: asText,
+                },
+                className
+            )}
+            before={showIcon && icons?.beforeLink && <Icon name={icons.beforeLink} size={14} />}
             variant={ButtonVariant.Text}
             {...other}
         />

@@ -19,7 +19,7 @@ import {
     Status,
     StatusType,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
@@ -28,9 +28,7 @@ import {SubscriptionStatus} from "../../types";
 import {getDiffDays} from "../../utils";
 import {openAddEmailPage} from "../../page";
 
-export interface TrialEndModalProps extends Partial<ModalProps> {
-
-}
+export interface TrialEndModalProps extends Partial<ModalProps> {}
 
 const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) => {
     const {t, choice} = useLocale();
@@ -54,11 +52,7 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
     const isTrialPreviewEnd = useMemo(() => {
         if (trialDiffDays === 0) return false;
 
-        if (
-            trialPreviewDiffDays !== undefined &&
-            trialPreviewDiffDays > -7 &&
-            trialPreviewDiffDays <= 0
-        ) {
+        if (trialPreviewDiffDays !== undefined && trialPreviewDiffDays > -7 && trialPreviewDiffDays <= 0) {
             return true;
         }
     }, [trialDiffDays, trialPreviewDiffDays]);
@@ -88,10 +82,11 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
     }, [isTrialPreviewEnd, trialPreviewDiffDays]);
 
     const descriptionText = useMemo(() => {
-        return (isTrialPreviewEnd
+        return (
+            isTrialPreviewEnd
                 ? t("addon_pay.modals.trial_preview_end.description", {name: t("addon_pay.ext_name")})
                 : t("addon_pay.modals.trial_end.description", {name: t("addon_pay.ext_name")})
-        ).replace('!', '$');
+        ).replace("!", "$");
     }, [isTrialPreviewEnd]);
 
     const handlePrimaryAction = useCallback(() => {
@@ -104,27 +99,33 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
         modalRef.current?.close();
     }, []);
 
-
     return (
         <Modal {...props} ref={setModalRef}>
-
-            <RestoreButton/>
+            <RestoreButton />
 
             <Scroll top={50}>
-                <Status bottom={11} text={statusText} type={StatusType.Error}/>
+                <Status bottom={11} text={statusText} type={StatusType.Error} />
 
-                <Title bottom={isTrialPreviewEnd ? 7 : 16} text={titleText}/>
+                <Title bottom={isTrialPreviewEnd ? 7 : 16} text={titleText} />
 
-                {subtitleText && <Subtitle bottom={30} text={subtitleText}/>}
+                {subtitleText && <Subtitle bottom={30} text={subtitleText} />}
 
-                <FeaturesList bottom={23}/>
+                <FeaturesList bottom={23} />
 
-                <Pickers bottom={26} ref={pickersRef}/>
+                <Pickers bottom={26} ref={pickersRef} />
 
                 <Actions
-                    primaryLabel={isTrialPreviewEnd ? t("addon_pay.modals.trial_preview_end.primary_action") : t("addon_pay.modals.trial_end.primary_action")}
-                    secondaryLabel={isTrialPreviewEnd ? t("addon_pay.modals.trial_preview_end.secondary_action") : undefined}
-                    secondaryNote={isTrialPreviewEnd ? t("addon_pay.modals.trial_preview_end.secondary_action_note") : undefined}
+                    primaryLabel={
+                        isTrialPreviewEnd
+                            ? t("addon_pay.modals.trial_preview_end.primary_action")
+                            : t("addon_pay.modals.trial_end.primary_action")
+                    }
+                    secondaryLabel={
+                        isTrialPreviewEnd ? t("addon_pay.modals.trial_preview_end.secondary_action") : undefined
+                    }
+                    secondaryNote={
+                        isTrialPreviewEnd ? t("addon_pay.modals.trial_preview_end.secondary_action_note") : undefined
+                    }
                     description={descriptionText}
                     onPrimaryClick={handlePrimaryAction}
                     onSecondaryClick={handleSecondaryAction}

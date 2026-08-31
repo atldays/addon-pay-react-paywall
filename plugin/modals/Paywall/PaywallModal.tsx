@@ -23,7 +23,7 @@ import {
     Title,
 } from "../../components";
 
-import {GiftStartModal, TrialActivatingModal, TrialStartModal,} from "../../modals";
+import {GiftStartModal, TrialActivatingModal, TrialStartModal} from "../../modals";
 
 import {useAddonPay} from "../../provider";
 
@@ -42,23 +42,16 @@ export interface PaywallModalProps extends Partial<ModalProps> {
 const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) => {
     const {type, className, ...other} = props;
 
-    const [title, setTitle] = useState('');
-    const [subtitle, setSubtitle] = useState('');
+    const [title, setTitle] = useState("");
+    const [subtitle, setSubtitle] = useState("");
 
     const {currentTime} = useCurrentTime();
 
-    const {trustedUserCount = '20,000', trustedRating = 4.5} = getAddonPayPaywallOptions();
+    const {trustedUserCount = "20,000", trustedRating = 4.5} = getAddonPayPaywallOptions();
 
     const {t} = useLocale();
 
-    const {
-        status,
-        gift,
-        trialPreview,
-        trial,
-        pro,
-        changeStatus
-    } = useAddonPay();
+    const {status, gift, trialPreview, trial, pro, changeStatus} = useAddonPay();
 
     const [modalRef, setModalRef] = useForwardedRef(ref);
 
@@ -99,7 +92,10 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
             return t("addon_pay.modals.paywall.default.description_after_trial_preview");
         }
 
-        return t("addon_pay.modals.paywall.default.description_after_trial", {name: t("addon_pay.ext_name")}).replace('!', '$');
+        return t("addon_pay.modals.paywall.default.description_after_trial", {name: t("addon_pay.ext_name")}).replace(
+            "!",
+            "$"
+        );
     }, [trialPreview, trial, pro, currentTime]);
 
     const primaryActionHandle = useCallback(() => {
@@ -156,30 +152,30 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
             <Modal
                 closeButton={{
                     children: t("addon_pay.not_now"),
-                    className: styles['paywall-modal__close-button']
+                    className: styles["paywall-modal__close-button"],
                 }}
                 onClose={closeHandle}
                 className={className}
                 {...other}
                 ref={setModalRef}
             >
-                <RestoreButton/>
+                <RestoreButton />
 
                 <Scroll top={50}>
-                    {type === PaywallModalType.Default &&
-                        <div className={styles['paywall-modal__rating']}>
-                            <Rating rating={trustedRating}/>
+                    {type === PaywallModalType.Default && (
+                        <div className={styles["paywall-modal__rating"]}>
+                            <Rating rating={trustedRating} />
                             {t("addon_pay.notes.trusted_by_users", {count: trustedUserCount})}
                         </div>
-                    }
+                    )}
 
-                    <Title bottom={17} text={title}/>
+                    <Title bottom={17} text={title} />
 
-                    {type !== PaywallModalType.Default && <Subtitle bottom={28} text={subtitle}/>}
+                    {type !== PaywallModalType.Default && <Subtitle bottom={28} text={subtitle} />}
 
-                    <FeaturesList bottom={28}/>
+                    <FeaturesList bottom={28} />
 
-                    <Pickers ref={pickersRef} bottom={45}/>
+                    <Pickers ref={pickersRef} bottom={45} />
 
                     <Actions
                         primaryLabel={t("addon_pay.modals.paywall.default.primary_action")}
@@ -201,15 +197,15 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
             </Modal>
 
             <Suspense>
-                <GiftStartModal ref={giftStartModalRef} className={className}/>
+                <GiftStartModal ref={giftStartModalRef} className={className} />
             </Suspense>
 
             <Suspense>
-                <TrialStartModal ref={trialStartModalRef} className={className}/>
+                <TrialStartModal ref={trialStartModalRef} className={className} />
             </Suspense>
 
             <Suspense>
-                <TrialActivatingModal ref={trialActivatingModalRef} className={className}/>
+                <TrialActivatingModal ref={trialActivatingModalRef} className={className} />
             </Suspense>
         </>
     );

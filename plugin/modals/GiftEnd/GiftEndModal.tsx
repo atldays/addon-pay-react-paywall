@@ -13,12 +13,13 @@ import {
     ModalActions,
     ModalProps,
     Pickers,
-    PickersActions, RestoreButton,
+    PickersActions,
+    RestoreButton,
     Scroll,
     Status,
     StatusType,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
@@ -28,9 +29,7 @@ import {getDiffDays} from "../../utils";
 import {SubscriptionStatus} from "../../types";
 import {openAddEmailPage} from "../../page";
 
-export interface GiftEndModalProps extends Partial<ModalProps> {
-
-}
+export interface GiftEndModalProps extends Partial<ModalProps> {}
 
 const GiftEndModal = forwardRef<ModalActions, GiftEndModalProps>((props, ref) => {
     const {t, choice} = useLocale();
@@ -62,25 +61,27 @@ const GiftEndModal = forwardRef<ModalActions, GiftEndModalProps>((props, ref) =>
 
     return (
         <Modal {...props} ref={setModalRef}>
-
-            <RestoreButton/>
+            <RestoreButton />
 
             <Scroll>
-                <Status bottom={17} type={StatusType.Error} text={t("addon_pay.modals.gift_end.tag")}/>
+                <Status bottom={17} type={StatusType.Error} text={t("addon_pay.modals.gift_end.tag")} />
 
-                <Title bottom={12} text={t("addon_pay.modals.gift_end.title")}/>
+                <Title bottom={12} text={t("addon_pay.modals.gift_end.title")} />
 
-                <Subtitle bottom={26} text={t("addon_pay.modals.gift_end.subtitle").replace('!', '$')}/>
+                <Subtitle bottom={26} text={t("addon_pay.modals.gift_end.subtitle").replace("!", "$")} />
 
-                <FeaturesList bottom={20}/>
+                <FeaturesList bottom={20} />
 
-                <Pickers bottom={26} ref={pickersRef}/>
+                <Pickers bottom={26} ref={pickersRef} />
 
                 <Actions
                     primaryLabel={t("addon_pay.modals.gift_end.primary_action")}
                     secondaryLabel={t("addon_pay.modals.gift_end.secondary_action")}
                     secondaryNote={t("addon_pay.modals.gift_end.secondary_action_note")}
-                    description={t("addon_pay.modals.gift_end.description", {name: t("addon_pay.ext_name")}).replace('!', '$')}
+                    description={t("addon_pay.modals.gift_end.description", {name: t("addon_pay.ext_name")}).replace(
+                        "!",
+                        "$"
+                    )}
                     onPrimaryClick={handlePrimaryAction}
                     onSecondaryClick={handleSecondaryAction}
                 />

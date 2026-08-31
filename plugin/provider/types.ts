@@ -1,32 +1,32 @@
 import {SubscriptionPlan, SubscriptionStatus} from "../types";
 
 export interface SubscriptionStorageContract {
-    status?: SubscriptionStatus,
-    email?: string,
-    hasDiscount?: boolean,
-    renewAfterEnd?: boolean,
+    status?: SubscriptionStatus;
+    email?: string;
+    hasDiscount?: boolean;
+    renewAfterEnd?: boolean;
     [SubscriptionStatus.Gift]?: {
-        startAt: number,
-        endAt: number,
-    }
+        startAt: number;
+        endAt: number;
+    };
     [SubscriptionStatus.TrialPreview]?: {
-        startAt: number,
-        endAt: number,
-    },
+        startAt: number;
+        endAt: number;
+    };
     [SubscriptionStatus.Trial]?: {
-        startAt: number,
-        endAt: number,
-    },
+        startAt: number;
+        endAt: number;
+    };
     [SubscriptionStatus.Pro]?: {
-        plan: SubscriptionPlan,
-        startAt: number,
-        endAt: number,
-    },
+        plan: SubscriptionPlan;
+        startAt: number;
+        endAt: number;
+    };
     lastShowModalAt?: {
-        trialStart?: number,
-        billingGrace?: number,
-        billingFailed?: number,
-    }
+        trialStart?: number;
+        billingGrace?: number;
+        billingFailed?: number;
+    };
 }
 
 export interface SubscriptionContextContract extends SubscriptionStorageContract {

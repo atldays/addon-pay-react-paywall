@@ -7,20 +7,10 @@ import {ComponentMargin} from "../../types";
 
 import styles from "./scroll.scss";
 
-export interface ScrollProps extends ScrollAreaProps, ComponentMargin {
-
-}
+export interface ScrollProps extends ScrollAreaProps, ComponentMargin {}
 
 const Scroll = (props: ScrollProps) => {
-    const {
-        top,
-        bottom,
-        style,
-        className,
-        viewportClassName,
-        children,
-        ...other
-    } = props;
+    const {top, bottom, style, className, viewportClassName, children, ...other} = props;
 
     return (
         <ScrollArea

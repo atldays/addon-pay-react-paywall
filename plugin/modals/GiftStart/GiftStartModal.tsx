@@ -15,16 +15,14 @@ import {
     Scroll,
     Status,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {getDiffDays} from "../../utils";
 
 import {useAddonPay} from "../../provider";
 
-export interface GiftStartModalProps extends Partial<ModalProps> {
-
-}
+export interface GiftStartModalProps extends Partial<ModalProps> {}
 
 const GiftStartModal = forwardRef<ModalActions, GiftStartModalProps>((props, ref) => {
     const {t, choice} = useLocale();
@@ -54,15 +52,14 @@ const GiftStartModal = forwardRef<ModalActions, GiftStartModalProps>((props, ref
 
     return (
         <Modal {...props} ref={setModalRef}>
-
             <Scroll>
-                <Title bottom={12} text={t("addon_pay.modals.gift_start.title")}/>
+                <Title bottom={12} text={t("addon_pay.modals.gift_start.title")} />
 
-                {statusText && <Status bottom={17} text={statusText}/>}
+                {statusText && <Status bottom={17} text={statusText} />}
 
-                <Subtitle bottom={23} text={subtitleText}/>
+                <Subtitle bottom={23} text={subtitleText} />
 
-                <FeaturesList bottom={50}/>
+                <FeaturesList bottom={50} />
 
                 <Actions
                     primaryLabel={t("addon_pay.modals.gift_start.primary_action")}

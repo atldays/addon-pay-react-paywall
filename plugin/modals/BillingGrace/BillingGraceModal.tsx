@@ -1,6 +1,6 @@
 import React, {forwardRef, memo, useCallback, useMemo} from "react";
 
-import {addDays} from 'date-fns';
+import {addDays} from "date-fns";
 
 import {useLocale} from "adnbn/locale/react";
 
@@ -17,7 +17,7 @@ import {
     Status,
     StatusType,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
@@ -26,9 +26,7 @@ import {getDateString} from "../../utils";
 
 import {SubscriptionStatus} from "../../types";
 
-export interface BillingFailedModalProps extends Partial<ModalProps> {
-
-}
+export interface BillingFailedModalProps extends Partial<ModalProps> {}
 
 const BillingGraceModal = forwardRef<ModalActions, BillingFailedModalProps>((props, ref) => {
     const {t} = useLocale();
@@ -55,15 +53,14 @@ const BillingGraceModal = forwardRef<ModalActions, BillingFailedModalProps>((pro
 
     return (
         <Modal {...props} ref={setModalRef}>
-
             <Scroll top={50}>
-                <Status bottom={11} text={t("addon_pay.tags.payment_needs_attention")} type={StatusType.Error}/>
+                <Status bottom={11} text={t("addon_pay.tags.payment_needs_attention")} type={StatusType.Error} />
 
-                <Title bottom={17} text={t("addon_pay.modals.billing_grace.title")}/>
+                <Title bottom={17} text={t("addon_pay.modals.billing_grace.title")} />
 
-                {graceDate &&
-                    <Subtitle bottom={22} text={t("addon_pay.modals.billing_grace.subtitle", {date: graceDate})}/>
-                }
+                {graceDate && (
+                    <Subtitle bottom={22} text={t("addon_pay.modals.billing_grace.subtitle", {date: graceDate})} />
+                )}
 
                 <Actions
                     primaryLabel={t("addon_pay.modals.billing_grace.primary_action")}

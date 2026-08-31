@@ -1,6 +1,6 @@
 import {createContext, useCallback, useContext, useEffect, useMemo, useRef, useState} from "react";
 
-import {addDays, addMonths, addYears} from 'date-fns';
+import {addDays, addMonths, addYears} from "date-fns";
 
 import {SubscriptionStorage} from "./Storage";
 
@@ -33,50 +33,47 @@ export const useSubscriptionStorage = () => {
         return !!storage?.status && storage.status !== SubscriptionStatus.Free;
     }, [storage, loading]);
 
-    const changeStatus = useCallback((status: SubscriptionStatus, plan?: SubscriptionPlan) => {
-        let value: SubscriptionStorageContract = {status};
+    const changeStatus = useCallback(
+        (status: SubscriptionStatus, plan?: SubscriptionPlan) => {
+            let value: SubscriptionStorageContract = {status};
 
-        const startAt = Date.now();
+            const startAt = Date.now();
 
-        if (status === SubscriptionStatus.Free) {
-            value.renewAfterEnd = false;
-        }
+            if (status === SubscriptionStatus.Free) {
+                value.renewAfterEnd = false;
+            }
 
-        if (status === SubscriptionStatus.Pro && plan) {
-            const date = plan === SubscriptionPlan.Monthly
-                ? addMonths(startAt, 1)
-                : addYears(startAt, 1);
+            if (status === SubscriptionStatus.Pro && plan) {
+                const date = plan === SubscriptionPlan.Monthly ? addMonths(startAt, 1) : addYears(startAt, 1);
 
-            value[SubscriptionStatus.Pro] = {plan, startAt, endAt: date.getTime()};
-            value.renewAfterEnd = true;
-        }
+                value[SubscriptionStatus.Pro] = {plan, startAt, endAt: date.getTime()};
+                value.renewAfterEnd = true;
+            }
 
-        if (status === SubscriptionStatus.Gift) {
-            value[SubscriptionStatus.Gift] = {startAt, endAt: addDays(startAt, 1).getTime()};
-        }
+            if (status === SubscriptionStatus.Gift) {
+                value[SubscriptionStatus.Gift] = {startAt, endAt: addDays(startAt, 1).getTime()};
+            }
 
-        if (status === SubscriptionStatus.TrialPreview) {
-            value[SubscriptionStatus.TrialPreview] = {startAt, endAt: addDays(startAt, 1).getTime()};
-        }
+            if (status === SubscriptionStatus.TrialPreview) {
+                value[SubscriptionStatus.TrialPreview] = {startAt, endAt: addDays(startAt, 1).getTime()};
+            }
 
-        if (status === SubscriptionStatus.Trial) {
-            const currentStartAt = storage?.trialPreview?.startAt || startAt;
+            if (status === SubscriptionStatus.Trial) {
+                const currentStartAt = storage?.trialPreview?.startAt || startAt;
 
-            value[SubscriptionStatus.Trial] = {
-                startAt: currentStartAt,
-                endAt: addDays(currentStartAt, 7).getTime()
-            };
-        }
+                value[SubscriptionStatus.Trial] = {
+                    startAt: currentStartAt,
+                    endAt: addDays(currentStartAt, 7).getTime(),
+                };
+            }
 
-        subscriptionStorage
-            .update(value)
-            .catch((e) => console.error("Failed to update subscription data", e));
-    }, [storage]);
+            subscriptionStorage.update(value).catch(e => console.error("Failed to update subscription data", e));
+        },
+        [storage]
+    );
 
     const update = useCallback((value: Partial<SubscriptionStorageContract>) => {
-        subscriptionStorage
-            .update(value)
-            .catch((e) => console.error("Failed to update subscription data", e));
+        subscriptionStorage.update(value).catch(e => console.error("Failed to update subscription data", e));
     }, []);
 
     useEffect(() => {

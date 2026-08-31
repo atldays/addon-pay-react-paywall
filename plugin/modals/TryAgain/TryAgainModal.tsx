@@ -4,20 +4,9 @@ import {useLocale} from "adnbn/locale/react";
 
 import {useForwardedRef} from "../../hooks";
 
-import {
-    Actions,
-    Footer,
-    LinkButton,
-    Modal,
-    ModalActions,
-    ModalProps,
-    Scroll,
-    Subtitle
-} from "../../components";
+import {Actions, Footer, LinkButton, Modal, ModalActions, ModalProps, Scroll, Subtitle} from "../../components";
 
-export interface TryAgainModalProps extends Partial<ModalProps> {
-
-}
+export interface TryAgainModalProps extends Partial<ModalProps> {}
 
 const TryAgainModal = forwardRef<ModalActions, TryAgainModalProps>((props, ref) => {
     const {t} = useLocale();
@@ -30,13 +19,11 @@ const TryAgainModal = forwardRef<ModalActions, TryAgainModalProps>((props, ref) 
 
     return (
         <Modal {...props} ref={setModalRef}>
-
             <Scroll>
-
                 <Subtitle
                     bottom={16}
                     text={t("addon_pay.modals.trial_activating.failed_subtitle")}
-                    style={{fontSize: '18px', fontWeight: 600}}
+                    style={{fontSize: "18px", fontWeight: 600}}
                 />
 
                 <Actions

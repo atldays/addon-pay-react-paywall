@@ -22,11 +22,17 @@
 
   &--primary {
     color: var(--addon-pay-primary-action-color, #060606) !important;
-    background: var(--addon-pay-primary-action-bg, var(--primary-color))  !important;
+    background: var(
+      --addon-pay-primary-action-bg,
+      var(--primary-color)
+    ) !important;
   }
 
   &--secondary {
-    color: var(--addon-pay-secondary-action-color, #FFFFFF) !important;
-    background: var(--addon-pay-secondary-action-bg, rgba(164, 164, 164, 0.2)) !important;
+    color: var(--addon-pay-secondary-action-color, #ffffff) !important;
+    background: var(
+      --addon-pay-secondary-action-bg,
+      rgba(164, 164, 164, 0.2)
+    ) !important;
   }
 }

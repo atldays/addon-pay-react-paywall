@@ -1,9 +1,8 @@
 .trial-activating-modal {
-
   &__container {
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 10px;
   }
 
   &__title-wrap {
@@ -23,7 +22,7 @@
     font-weight: 600;
     font-size: 18px;
     text-align: center;
-    color: #F0F0F0;
+    color: #f0f0f0;
 
     opacity: 0;
     transform: translateY(100%);
@@ -39,9 +38,8 @@
     }
   }
 
-
   &__subtitle {
-    color: #F0F0F0;
+    color: #f0f0f0;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
@@ -53,7 +51,6 @@
 }
 
 @keyframes title-slide {
-
   0% {
     opacity: 0;
     transform: translateY(100%);

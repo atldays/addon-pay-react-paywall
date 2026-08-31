@@ -13,10 +13,7 @@ const RestoreButton = (props: ButtonProps) => {
     const {t} = useLocale();
 
     return (
-        <Button
-            className={classnames(styles['restore-button'], className)}
-            {...other}
-        >
+        <Button className={classnames(styles["restore-button"], className)} {...other}>
             {t("addon_pay.restore")}
         </Button>
     );

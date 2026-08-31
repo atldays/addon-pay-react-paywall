@@ -8,7 +8,7 @@ export default definePlugin((options: AddonPayPaywallOptions) => {
         name: PluginName,
         locale: true,
         page: true,
-        bundler: ()=>{
+        bundler: () => {
             return {
                 plugins: [
                     new DefinePlugin({
@@ -16,6 +16,6 @@ export default definePlugin((options: AddonPayPaywallOptions) => {
                     }),
                 ],
             } satisfies RspackConfig;
-        }
+        },
     };
 });

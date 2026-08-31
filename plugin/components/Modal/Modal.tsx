@@ -16,20 +16,19 @@ export interface ModalActions {
 export {type ModalProps};
 
 const Modal = forwardRef<ModalActions, ModalProps>((props, ref) => {
-    const {
-        onClose,
-        className,
-        childrenClassName,
-        ...other
-    } = props;
+    const {onClose, className, childrenClassName, ...other} = props;
 
     const [open, setOpen] = useState(false);
 
-    useImperativeHandle(ref, () => ({
-        open: () => setOpen(true),
-        close: () => setOpen(false),
-        isOpen: () => open,
-    }), [open]);
+    useImperativeHandle(
+        ref,
+        () => ({
+            open: () => setOpen(true),
+            close: () => setOpen(false),
+            isOpen: () => open,
+        }),
+        [open]
+    );
 
     const close = useCallback(() => {
         onClose?.();
@@ -42,11 +41,11 @@ const Modal = forwardRef<ModalActions, ModalProps>((props, ref) => {
             fullscreen={true}
             onClose={close}
             closeButton={{
-                children: <Icon name="close"/>,
-                className: styles['modal__close-button']
+                children: <Icon name="close" />,
+                className: styles["modal__close-button"],
             }}
-            className={classnames(styles['modal'], className)}
-            childrenClassName={classnames(styles['modal__children'], childrenClassName)}
+            className={classnames(styles["modal"], className)}
+            childrenClassName={classnames(styles["modal__children"], childrenClassName)}
             {...other}
         />
     );

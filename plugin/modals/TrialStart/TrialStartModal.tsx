@@ -17,7 +17,7 @@ import {
     Scroll,
     Status,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {getDateString, getDiffDays} from "../../utils";
@@ -25,9 +25,7 @@ import {getDateString, getDiffDays} from "../../utils";
 import {useAddonPay} from "../../provider";
 import {SubscriptionStatus} from "../../types";
 
-export interface TrialStartModalProps extends Partial<ModalProps> {
-
-}
+export interface TrialStartModalProps extends Partial<ModalProps> {}
 
 const TrialStartModal = forwardRef<ModalActions, TrialStartModalProps>((props, ref) => {
     const {t, choice} = useLocale();
@@ -46,14 +44,14 @@ const TrialStartModal = forwardRef<ModalActions, TrialStartModalProps>((props, r
 
         if (status === SubscriptionStatus.TrialPreview && trialPreview) {
             //const count = getDiffDays(trialPreview.endAt, currentTime);
-            const value = choice("addon_pay.days_with_count", 7, {count: '7'});
+            const value = choice("addon_pay.days_with_count", 7, {count: "7"});
             return t("addon_pay.tags.trial_remaining", {value});
         }
     }, [trial, trialPreview, currentTime]);
 
     const subtitleText = useMemo(() => {
         if (status === SubscriptionStatus.Trial && trial) {
-            const date = format(trial.endAt, 'MMMM d, yyyy');
+            const date = format(trial.endAt, "MMMM d, yyyy");
             return t("addon_pay.modals.trial_start.subtitle", {date, name: t("addon_pay.ext_name")});
         }
         if (status === SubscriptionStatus.TrialPreview && trialPreview) {
@@ -69,15 +67,14 @@ const TrialStartModal = forwardRef<ModalActions, TrialStartModalProps>((props, r
 
     return (
         <Modal {...props} ref={setModalRef}>
-
             <Scroll>
-                <Title bottom={12} text={t("addon_pay.modals.trial_start.title")} showPro={true}/>
+                <Title bottom={12} text={t("addon_pay.modals.trial_start.title")} showPro={true} />
 
-                {statusText && <Status bottom={17} text={statusText}/>}
+                {statusText && <Status bottom={17} text={statusText} />}
 
-                {subtitleText && <Subtitle bottom={23} text={subtitleText}/>}
+                {subtitleText && <Subtitle bottom={23} text={subtitleText} />}
 
-                <FeaturesList bottom={50}/>
+                <FeaturesList bottom={50} />
 
                 <Actions
                     primaryLabel={t("addon_pay.modals.trial_start.primary_action")}

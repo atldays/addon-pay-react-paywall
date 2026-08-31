@@ -1,17 +1,16 @@
 .paywall-modal {
-
   &__close-button {
     top: 26px;
     right: auto;
     height: 15px !important;
     margin-inline-end: 20px;
     width: auto;
-    color: var(--addon-pay-close-text-color, #6B6B6B);
+    color: var(--addon-pay-close-text-color, #6b6b6b);
     font-size: var(--addon-pay-close-font-size, 12px);
     font-weight: var(--addon-pay-close-font-weight, 600);
 
     &:hover {
-      color: var(--addon-pay-close-text-color, #6B6B6B) !important;
+      color: var(--addon-pay-close-text-color, #6b6b6b) !important;
       background: transparent !important;
     }
   }
@@ -22,7 +21,7 @@
     align-items: center;
     text-align: center;
     gap: var(--addon-pay-rating-gap, 4px);
-    color: var(--addon-pay-rating-color, #FFFFFF);
+    color: var(--addon-pay-rating-color, #ffffff);
     font-size: var(--addon-pay-rating-font-size, 10px);
     font-weight: var(--addon-pay-rating-font-weight, 600);
     line-height: var(--addon-pay-rating-line-height, 140%);

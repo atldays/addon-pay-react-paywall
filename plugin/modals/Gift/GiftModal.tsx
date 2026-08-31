@@ -17,7 +17,7 @@ import {
     Scroll,
     Status,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
@@ -28,9 +28,7 @@ import {useCurrentTime} from "../../hooks";
 
 import {SubscriptionPlan, SubscriptionStatus} from "../../types";
 
-export interface GiftModalProps extends Partial<ModalProps> {
-
-}
+export interface GiftModalProps extends Partial<ModalProps> {}
 
 const GiftModal = forwardRef<ModalActions, GiftModalProps>((props, ref) => {
     const [plan, setPlan] = useState(SubscriptionPlan.Yearly);
@@ -64,21 +62,23 @@ const GiftModal = forwardRef<ModalActions, GiftModalProps>((props, ref) => {
 
     return (
         <Modal {...props} ref={setModalRef}>
-
             <Scroll>
-                <Title bottom={12} text={t("addon_pay.ext_name")} showPro={true}/>
+                <Title bottom={12} text={t("addon_pay.ext_name")} showPro={true} />
 
-                {statusText && <Status bottom={17} text={statusText}/>}
+                {statusText && <Status bottom={17} text={statusText} />}
 
-                <FeaturesList bottom={20}/>
+                <FeaturesList bottom={20} />
 
-                <Subtitle bottom={26} text={t("addon_pay.modals.gift.subtitle").replace('!', '$')}/>
+                <Subtitle bottom={26} text={t("addon_pay.modals.gift.subtitle").replace("!", "$")} />
 
-                <Pickers bottom={26} ref={pickersRef} value={plan} onChangeValue={setPlan}/>
+                <Pickers bottom={26} ref={pickersRef} value={plan} onChangeValue={setPlan} />
 
                 <Actions
                     primaryLabel={actionText}
-                    description={t("addon_pay.modals.gift.description", {name: t("addon_pay.ext_name")}).replace('!', '$')}
+                    description={t("addon_pay.modals.gift.description", {name: t("addon_pay.ext_name")}).replace(
+                        "!",
+                        "$"
+                    )}
                     onPrimaryClick={handlePrimaryAction}
                 />
             </Scroll>

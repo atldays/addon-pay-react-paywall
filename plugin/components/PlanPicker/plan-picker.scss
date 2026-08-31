@@ -1,4 +1,4 @@
-@use 'addon-ui/theme';
+@use "addon-ui/theme";
 
 $root: plan-picker;
 
@@ -14,8 +14,9 @@ $root: plan-picker;
     align-items: center;
     width: 100%;
     padding: 12px 16px;
-    border: var(--addon-pay-picker-card-active-border-width, 3px) solid transparent;
-    box-shadow: 0 0 0 1px  var(--addon-pay-picker-card-border-color, #525252);
+    border: var(--addon-pay-picker-card-active-border-width, 3px) solid
+      transparent;
+    box-shadow: 0 0 0 1px var(--addon-pay-picker-card-border-color, #525252);
     background: var(--addon-pay-picker-card-bg, transparent);
     border-radius: var(--addon-pay-picker-card-radius, 14px);
     cursor: pointer;
@@ -25,14 +26,18 @@ $root: plan-picker;
     .#{$root}--active & {
       box-shadow: 0 0 0 1px transparent;
       background: (
-              linear-gradient(90deg,
-                      var(--addon-pay-picker-card-active-bg, #142417) 0%,
-                      var(--addon-pay-picker-card-active-bg, #142417) 100%
-              ) padding-box,
-              linear-gradient(90deg,
-                      var(--addon-pay-picker-card-active-border-color-from, #21D889) 0%,
-                      var(--addon-pay-picker-card-active-border-color-to, #21D6D9) 100%
-              ) border-box
+        linear-gradient(
+            90deg,
+            var(--addon-pay-picker-card-active-bg, #142417) 0%,
+            var(--addon-pay-picker-card-active-bg, #142417) 100%
+          )
+          padding-box,
+        linear-gradient(
+            90deg,
+            var(--addon-pay-picker-card-active-border-color-from, #21d889) 0%,
+            var(--addon-pay-picker-card-active-border-color-to, #21d6d9) 100%
+          )
+          border-box
       );
     }
   }
@@ -61,26 +66,26 @@ $root: plan-picker;
   &__wrap {
     display: flex;
     flex-direction: column;
-    gap: 2px
+    gap: 2px;
   }
 
   &__title {
     font-size: var(--addon-pay-picker-title-font-size, 15px);
     font-weight: var(--addon-pay-picker-title-font-weight, 400);
-    color: var(--addon-pay-picker-title-color, #FCFCFC);
+    color: var(--addon-pay-picker-title-color, #fcfcfc);
     line-height: 140%;
   }
 
   &__subtitle {
     font-size: var(--addon-pay-picker-subtitle-font-size, 24px);
     font-weight: var(--addon-pay-picker-subtitle-font-weight, 600);
-    color: var(--addon-pay-picker-subtitle-color, #FCFCFC);
+    color: var(--addon-pay-picker-subtitle-color, #fcfcfc);
     line-height: 140%;
   }
 
   &__description {
     font-size: var(--addon-pay-picker-description-font-size, 14px);
-    color: var(--addon-pay-picker-description-color, #91A7B4);
+    color: var(--addon-pay-picker-description-color, #91a7b4);
     line-height: 140%;
     transition: color var(--speed-color);
     text-wrap: nowrap;

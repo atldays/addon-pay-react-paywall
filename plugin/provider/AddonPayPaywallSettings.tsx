@@ -9,7 +9,7 @@ import {
     PopoverContent,
     PopoverContentProps,
     PopoverTrigger,
-    TextField
+    TextField,
 } from "addon-ui";
 
 import {useCurrentTime} from "../hooks";
@@ -20,9 +20,7 @@ import {SubscriptionStatus} from "../types";
 
 const storage = new SubscriptionStorage();
 
-interface AddonPayPaywallSettingsProps extends PopoverContentProps {
-
-}
+interface AddonPayPaywallSettingsProps extends PopoverContentProps {}
 
 // Component for testing
 const AddonPayPaywallSettings = (props: AddonPayPaywallSettingsProps) => {
@@ -46,37 +44,40 @@ const AddonPayPaywallSettings = (props: AddonPayPaywallSettingsProps) => {
     return (
         <Popover>
             <PopoverTrigger asChild={true}>
-                <IconButton style={{border: 'none', background: 'none', padding: '0px'}}>
-                    <span style={{fontSize: '20px'}}>⚙️</span>
+                <IconButton style={{border: "none", background: "none", padding: "0px"}}>
+                    <span style={{fontSize: "20px"}}>⚙️</span>
                 </IconButton>
             </PopoverTrigger>
-            <PopoverContent
-                sideOffset={5}
-                arrow={true}
-                {...props}
-            >
-                <div style={{display: "flex", flexDirection: "column", gap: '10px', padding: '15px'}}>
-                    <div style={{display: "flex", alignItems: "center", gap: '40px', justifyContent: 'space-between'}}>
+            <PopoverContent sideOffset={5} arrow={true} {...props}>
+                <div style={{display: "flex", flexDirection: "column", gap: "10px", padding: "15px"}}>
+                    <div style={{display: "flex", alignItems: "center", gap: "40px", justifyContent: "space-between"}}>
                         <Button onClick={resetCurrentTime}>Reset time</Button>
-                        <div style={{display: "flex", alignItems: "center", gap: '10px'}}>
-                            <Button size={ButtonSize.Small} onClick={() => addDays(-1)}>-1</Button>
+                        <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
+                            <Button size={ButtonSize.Small} onClick={() => addDays(-1)}>
+                                -1
+                            </Button>
                             <TextField
                                 type="date"
-                                value={currentTime ? format(currentTime, 'yyyy-MM-dd') : ''}
-                                onChange={(e) => setCurrentTime(new Date(e.target.value).getTime())}
+                                value={currentTime ? format(currentTime, "yyyy-MM-dd") : ""}
+                                onChange={e => setCurrentTime(new Date(e.target.value).getTime())}
                             />
-                            <Button size={ButtonSize.Small} onClick={() => addDays(1)}>+1</Button>
+                            <Button size={ButtonSize.Small} onClick={() => addDays(1)}>
+                                +1
+                            </Button>
                         </div>
                     </div>
 
-                    <div style={{display: "flex", alignItems: "center", gap: '40px', justifyContent: 'space-between'}}>
+                    <div style={{display: "flex", alignItems: "center", gap: "40px", justifyContent: "space-between"}}>
                         <Button onClick={resetStatus}>Reset status</Button>
-                        <span>Status: {status || 'unknown'}{(status === SubscriptionStatus.Pro && pro?.plan) && ` (${pro.plan})`}</span>
+                        <span>
+                            Status: {status || "unknown"}
+                            {status === SubscriptionStatus.Pro && pro?.plan && ` (${pro.plan})`}
+                        </span>
                     </div>
 
-                    <div style={{display: "flex", alignItems: "center", gap: '40px', justifyContent: 'space-between'}}>
+                    <div style={{display: "flex", alignItems: "center", gap: "40px", justifyContent: "space-between"}}>
                         <Button onClick={resetEmail}>Reset email</Button>
-                        <span>Email: {email || 'unknown'}</span>
+                        <span>Email: {email || "unknown"}</span>
                     </div>
                 </div>
             </PopoverContent>

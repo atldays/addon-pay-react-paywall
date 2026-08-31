@@ -17,7 +17,7 @@ import {
     Scroll,
     Status,
     Subtitle,
-    Title
+    Title,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
@@ -27,9 +27,7 @@ import {getDiffDays} from "../../utils";
 import {SubscriptionStatus} from "../../types";
 import {openAddEmailPage} from "../../page";
 
-export interface TrialModalProps extends Partial<ModalProps> {
-
-}
+export interface TrialModalProps extends Partial<ModalProps> {}
 
 const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
     const {t, choice} = useLocale();
@@ -61,7 +59,7 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
         if (status === SubscriptionStatus.TrialPreview && trialPreview) {
             const count = 7 - Math.abs(getDiffDays(trialPreview.endAt, currentTime));
             const days = choice("addon_pay.days", count);
-            return t("addon_pay.modals.trial_preview.subtitle", {count, days}).replace('!', '$');
+            return t("addon_pay.modals.trial_preview.subtitle", {count, days}).replace("!", "$");
         }
     }, [trial, trialPreview, status, currentTime]);
 
@@ -73,19 +71,21 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
 
         if (status === SubscriptionStatus.TrialPreview && trialPreview) {
             const count = getDiffDays(trialPreview.endAt, currentTime);
-            return t("addon_pay.modals.trial_preview.tag", {value: choice("addon_pay.days_with_count", count, {count})});
+            return t("addon_pay.modals.trial_preview.tag", {
+                value: choice("addon_pay.days_with_count", count, {count}),
+            });
         }
     }, [trial, trialPreview, status, currentTime]);
 
     const descriptionText = useMemo(() => {
-        const name = t("addon_pay.ext_name")
+        const name = t("addon_pay.ext_name");
 
         if (status === SubscriptionStatus.Trial && trial) {
-            return t("addon_pay.modals.trial.description", {name}).replace('!', '$');
+            return t("addon_pay.modals.trial.description", {name}).replace("!", "$");
         }
 
         if (status === SubscriptionStatus.TrialPreview && trialPreview) {
-            return t("addon_pay.modals.trial_preview.description", {name}).replace('!', '$');
+            return t("addon_pay.modals.trial_preview.description", {name}).replace("!", "$");
         }
     }, [trial, trialPreview, status, currentTime]);
 
@@ -99,25 +99,29 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
         modalRef.current?.close();
     }, []);
 
-
     return (
         <Modal {...props} ref={setModalRef}>
-
             <Scroll>
-                <Title bottom={12} text={t("addon_pay.ext_name")} showPro={true}/>
+                <Title bottom={12} text={t("addon_pay.ext_name")} showPro={true} />
 
-                {statusText && <Status bottom={17} text={statusText}/>}
+                {statusText && <Status bottom={17} text={statusText} />}
 
-                <FeaturesList bottom={31}/>
+                <FeaturesList bottom={31} />
 
-                {subtitleText &&  <Subtitle bottom={26} text={subtitleText}/>}
+                {subtitleText && <Subtitle bottom={26} text={subtitleText} />}
 
-                <Pickers bottom={26} ref={pickersRef}/>
+                <Pickers bottom={26} ref={pickersRef} />
 
                 <Actions
-                    primaryLabel={isTrialPreview ? t("addon_pay.modals.trial_preview.primary_action") : t("addon_pay.modals.trial.primary_action")}
+                    primaryLabel={
+                        isTrialPreview
+                            ? t("addon_pay.modals.trial_preview.primary_action")
+                            : t("addon_pay.modals.trial.primary_action")
+                    }
                     secondaryLabel={isTrialPreview ? t("addon_pay.modals.trial_preview.secondary_action") : undefined}
-                    secondaryNote={isTrialPreview ? t("addon_pay.modals.trial_preview.secondary_action_note") : undefined}
+                    secondaryNote={
+                        isTrialPreview ? t("addon_pay.modals.trial_preview.secondary_action_note") : undefined
+                    }
                     description={descriptionText}
                     onPrimaryClick={handlePrimaryAction}
                     onSecondaryClick={handleSecondaryAction}

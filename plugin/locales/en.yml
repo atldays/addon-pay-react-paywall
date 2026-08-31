@@ -14,161 +14,161 @@ addon_pay:
     - days
 
   days_with_count:
-    - '{{count}} day'
-    - '{{count}} days'
+    - "{{count}} day"
+    - "{{count}} days"
 
   date_until:
-    '1': January {{day}}, {{year}}
-    '2': February {{day}}, {{year}}
-    '3': March {{day}}, {{year}}
-    '4': April {{day}}, {{year}}
-    '5': May {{day}}, {{year}}
-    '6': June {{day}}, {{year}}
-    '7': July {{day}}, {{year}}
-    '8': August {{day}}, {{year}}
-    '9': September {{day}}, {{year}}
-    '10': October {{day}}, {{year}}
-    '11': November {{day}}, {{year}}
-    '12': December {{day}}, {{year}}
+    "1": January {{day}}, {{year}}
+    "2": February {{day}}, {{year}}
+    "3": March {{day}}, {{year}}
+    "4": April {{day}}, {{year}}
+    "5": May {{day}}, {{year}}
+    "6": June {{day}}, {{year}}
+    "7": July {{day}}, {{year}}
+    "8": August {{day}}, {{year}}
+    "9": September {{day}}, {{year}}
+    "10": October {{day}}, {{year}}
+    "11": November {{day}}, {{year}}
+    "12": December {{day}}, {{year}}
 
   links:
-      privacy_policy: Privacy Policy
-      terms_of_use: Terms of Use
-      manage_billing: Manage billing
-      change_plan: Change plan
-      cancel: Cancel
+    privacy_policy: Privacy Policy
+    terms_of_use: Terms of Use
+    manage_billing: Manage billing
+    change_plan: Change plan
+    cancel: Cancel
 
   notes:
-      trusted_by_users: Trusted by {{count}} users
-      no_credit_card_required: No credit card required
-      no_risk_cancel_anytime: No risk. Cancel anytime
-      your_gift_ends_automatically: Your gift ends automatically
-      your_trial_ends_automatically: Your trial ends automatically
+    trusted_by_users: Trusted by {{count}} users
+    no_credit_card_required: No credit card required
+    no_risk_cancel_anytime: No risk. Cancel anytime
+    your_gift_ends_automatically: Your gift ends automatically
+    your_trial_ends_automatically: Your trial ends automatically
 
   tags:
-      gift_remaining: Gift • {{value}} remaining
-      trial_remaining: Free trial • {{value}} remaining
-      trial_has_ended: Free trial has ended
-      monthly_plan_renews: Monthly plan • Renews {{date}}
-      monthly_plan_access_until: Monthly plan • Access until {{date}}
-      yearly_plan_renews: Yearly plan • !{{value}} • Renews {{date}}
-      yearly_plan_access_until: Yearly plan • !{{value}} • Access until {{date}}
-      payment_needs_attention: Payment needs attention
+    gift_remaining: Gift • {{value}} remaining
+    trial_remaining: Free trial • {{value}} remaining
+    trial_has_ended: Free trial has ended
+    monthly_plan_renews: Monthly plan • Renews {{date}}
+    monthly_plan_access_until: Monthly plan • Access until {{date}}
+    yearly_plan_renews: Yearly plan • !{{value}} • Renews {{date}}
+    yearly_plan_access_until: Yearly plan • !{{value}} • Access until {{date}}
+    payment_needs_attention: Payment needs attention
 
   modals:
-      paywall:
-        default:
-          title: *ext_name
-          subtitle: ' '
-          primary_action: Upgrade to Pro
-          secondary_action: Start Free Trial
-          secondary_action_note: No card required
-          secondary_action_after_trial_preview: Continue Free Trial
-          description: Start a free 7-day trial, or choose a plan and upgrade now.
-          description_after_trial_preview: Continue your free trial, or choose a plan and upgrade now.
-          description_after_trial: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-
-      gift_start:
-        title: A Pro gift for you
-        subtitle: We’ve gifted you limited access to {{name}} Pro for the next {{days}}.
-        tag: Gift • {{value}} remaining
-        primary_action: Start exploring Pro
-
-      gift:
+    paywall:
+      default:
         title: *ext_name
-        subtitle: Upgrade to Pro to continue without limits after gift will expired.
-        tag: Gift • {{value}} remaining
-        description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-        primary_action: Upgrade to Pro for {{value}}
-
-      gift_end:
-        title: Keep Exploring with Pro
-        subtitle: Start a free trial or choose a plan to continue using Pro.
-        description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-        tag: Pro gift ended
+        subtitle: " "
         primary_action: Upgrade to Pro
         secondary_action: Start Free Trial
         secondary_action_note: No card required
+        secondary_action_after_trial_preview: Continue Free Trial
+        description: Start a free 7-day trial, or choose a plan and upgrade now.
+        description_after_trial_preview: Continue your free trial, or choose a plan and upgrade now.
+        description_after_trial: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
 
-      trial_activating:
-        title_1: Your Pro access is almost ready...
-        title_2: Activating your free trial…
-        title_3: Unlocking premium features...
-        subtitle: We’re setting up your 7-day free trial and unlocking every {{name}} Pro feature for your account.
-        no_internet: Connect to the internet to activate your trial
-        failed_subtitle: We couldn’t activate your trial
-        failed_primary_action: Try again
+    gift_start:
+      title: A Pro gift for you
+      subtitle: We’ve gifted you limited access to {{name}} Pro for the next {{days}}.
+      tag: Gift • {{value}} remaining
+      primary_action: Start exploring Pro
 
-      trial_start:
-        title: *ext_name
-        subtitle: All {{name}} Pro features are unlocked until {{date}}. Start building your reference library with no limits.
-        tag: Free trial • {{value}} remaining
-        primary_action: Start exploring Pro
+    gift:
+      title: *ext_name
+      subtitle: Upgrade to Pro to continue without limits after gift will expired.
+      tag: Gift • {{value}} remaining
+      description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
+      primary_action: Upgrade to Pro for {{value}}
 
-      trial:
-        title: *ext_name
-        subtitle: Upgrade to Pro to continue without limits after your trial ends.
-        description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-        tag: Free trial • {{value}} remaining
-        primary_action: Upgrade
+    gift_end:
+      title: Keep Exploring with Pro
+      subtitle: Start a free trial or choose a plan to continue using Pro.
+      description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
+      tag: Pro gift ended
+      primary_action: Upgrade to Pro
+      secondary_action: Start Free Trial
+      secondary_action_note: No card required
 
-      trial_preview:
-        title: *ext_name
-        subtitle: Add your email to get {{count}} more {{days}} of Pro.
-        description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-        tag: Free trial • {{value}} remaining
-        primary_action: Upgrade to Pro
-        secondary_action: Continue Free Trial
-        secondary_action_note: No card required
+    trial_activating:
+      title_1: Your Pro access is almost ready...
+      title_2: Activating your free trial…
+      title_3: Unlocking premium features...
+      subtitle: We’re setting up your 7-day free trial and unlocking every {{name}} Pro feature for your account.
+      no_internet: Connect to the internet to activate your trial
+      failed_subtitle: We couldn’t activate your trial
+      failed_primary_action: Try again
 
-      trial_end:
-        title: Upgrade to Pro to Continue Without Limits
-        tag: Free trial has ended
-        description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-        primary_action: Upgrade to Pro
+    trial_start:
+      title: *ext_name
+      subtitle: All {{name}} Pro features are unlocked until {{date}}. Start building your reference library with no limits.
+      tag: Free trial • {{value}} remaining
+      primary_action: Start exploring Pro
 
-      trial_preview_end:
-        title: Continue Your Free Trial
-        subtitle: Add your email to get {{count}} more {{days}} of Pro.
-        description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
-        tag: '{{count}}-{{days}} trial complete'
-        primary_action: Upgrade to Pro
-        secondary_action: Continue Free Trial
-        secondary_action_note: No card required
+    trial:
+      title: *ext_name
+      subtitle: Upgrade to Pro to continue without limits after your trial ends.
+      description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
+      tag: Free trial • {{value}} remaining
+      primary_action: Upgrade
 
-      features:
-        title: *ext_name
+    trial_preview:
+      title: *ext_name
+      subtitle: Add your email to get {{count}} more {{days}} of Pro.
+      description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
+      tag: Free trial • {{value}} remaining
+      primary_action: Upgrade to Pro
+      secondary_action: Continue Free Trial
+      secondary_action_note: No card required
 
-      before_cancel:
-        title: Before you cancel…
-        subtitle: 'If you continue, your subscription will not renew. You will lose access after {{date}} and will no longer be able to use Pro features:'
-        lose_discount: You will lose your 30% discount for the next subscription which you have applied
-        primary_action: Keep Pro subscription
-        primary_action_loading: Applying discount…
-        secondary_action: Continue to cancellation
+    trial_end:
+      title: Upgrade to Pro to Continue Without Limits
+      tag: Free trial has ended
+      description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
+      primary_action: Upgrade to Pro
 
-      offer:
-        title: Stay with Pro and save 30%
-        subtitle: Keep every Pro features for just !20.99 for your next payment. Your regular price returns after the discounted period.
-        description: Save additional 30% with annual billing. That’s like !1.75/month for {{name}} Pro.
-        primary_action: Apply 30% discount
-        secondary_action: Continue to cancellation
+    trial_preview_end:
+      title: Continue Your Free Trial
+      subtitle: Add your email to get {{count}} more {{days}} of Pro.
+      description: Save 50% with annual billing. That’s like !2.49/month for {{name}} Pro.
+      tag: "{{count}}-{{days}} trial complete"
+      primary_action: Upgrade to Pro
+      secondary_action: Continue Free Trial
+      secondary_action_note: No card required
 
-      cancelled:
-        title: Your Pro subscription has been canceled
-        subtitle: 'Your Pro features will remain available until {{date}}. You won’t be charged again. Make the most of your remaining Pro access:'
-        subtitle_2: 'Changed your mind? Reactivate now and keep your current !29.99/year price. Your access and billing schedule will continue without interruption:'
-        primary_action: Reactivate subscription
+    features:
+      title: *ext_name
 
-      billing_grace:
-        title: We couldn’t renew your Pro subscription
-        subtitle: Your payment didn’t go through, but your Pro access remains active until {{date}}. Update your payment method to avoid interruption.
-        tag: Payment needs attention
-        primary_action: Update payment method
-        secondary_action: Contact support
+    before_cancel:
+      title: Before you cancel…
+      subtitle: "If you continue, your subscription will not renew. You will lose access after {{date}} and will no longer be able to use Pro features:"
+      lose_discount: You will lose your 30% discount for the next subscription which you have applied
+      primary_action: Keep Pro subscription
+      primary_action_loading: Applying discount…
+      secondary_action: Continue to cancellation
 
-      billing_failed:
-        title: Your Pro access is paused
-        subtitle: Restore Pro to continue using premium features.
-        tag: Payment needs attention
-        primary_action: Restore Pro
+    offer:
+      title: Stay with Pro and save 30%
+      subtitle: Keep every Pro features for just !20.99 for your next payment. Your regular price returns after the discounted period.
+      description: Save additional 30% with annual billing. That’s like !1.75/month for {{name}} Pro.
+      primary_action: Apply 30% discount
+      secondary_action: Continue to cancellation
+
+    cancelled:
+      title: Your Pro subscription has been canceled
+      subtitle: "Your Pro features will remain available until {{date}}. You won’t be charged again. Make the most of your remaining Pro access:"
+      subtitle_2: "Changed your mind? Reactivate now and keep your current !29.99/year price. Your access and billing schedule will continue without interruption:"
+      primary_action: Reactivate subscription
+
+    billing_grace:
+      title: We couldn’t renew your Pro subscription
+      subtitle: Your payment didn’t go through, but your Pro access remains active until {{date}}. Update your payment method to avoid interruption.
+      tag: Payment needs attention
+      primary_action: Update payment method
+      secondary_action: Contact support
+
+    billing_failed:
+      title: Your Pro access is paused
+      subtitle: Restore Pro to continue using premium features.
+      tag: Payment needs attention
+      primary_action: Restore Pro

@@ -11,12 +11,12 @@
   text-align: center;
 
   &--success {
-    color: var(--addon-pay-status-success-color, #25DE7F);
+    color: var(--addon-pay-status-success-color, #25de7f);
     background: var(--addon-pay-status-success-bg, rgba(36, 61, 47, 0.5));
   }
 
   &--error {
-    color: var(--addon-pay-status-error-color, #FF6565);
+    color: var(--addon-pay-status-error-color, #ff6565);
     background: var(--addon-pay-status-error-bg, rgba(47, 9, 9, 0.4));
   }
 }

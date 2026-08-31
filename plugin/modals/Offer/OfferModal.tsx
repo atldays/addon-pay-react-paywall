@@ -19,7 +19,7 @@ import {
     Scroll,
     Subtitle,
     Tag,
-    Title
+    Title,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
@@ -28,9 +28,7 @@ import {SubscriptionPlan} from "../../types";
 
 import styles from "./offer-modal.scss";
 
-export interface OfferModalProps extends Partial<ModalProps>, Pick<ActionsProps, 'onSecondaryClick'> {
-
-}
+export interface OfferModalProps extends Partial<ModalProps>, Pick<ActionsProps, "onSecondaryClick"> {}
 
 const OfferModal = forwardRef<ModalActions, OfferModalProps>((props, ref) => {
     const {onSecondaryClick, ...other} = props;
@@ -53,13 +51,12 @@ const OfferModal = forwardRef<ModalActions, OfferModalProps>((props, ref) => {
 
     return (
         <Modal {...other} ref={setModalRef}>
-
             <Scroll>
-                <Title bottom={17} text={t("addon_pay.modals.offer.title")}/>
+                <Title bottom={17} text={t("addon_pay.modals.offer.title")} />
 
-                <Subtitle bottom={25} text={t("addon_pay.modals.offer.subtitle").replace('!', '$')}/>
+                <Subtitle bottom={25} text={t("addon_pay.modals.offer.subtitle").replace("!", "$")} />
 
-                <FeaturesList/>
+                <FeaturesList />
 
                 <PlanPicker
                     name="plan"
@@ -70,12 +67,14 @@ const OfferModal = forwardRef<ModalActions, OfferModalProps>((props, ref) => {
                         <div className={styles["offer-modal__picker-subtitle"]}>
                             <span>$29.99</span>
                             <span>$20.99</span>
-                        </div>}
+                        </div>
+                    }
                     description={
                         <div className={styles["offer-modal__picker-description"]}>
                             <Tag>{t("addon_pay.save_percentage", {value: "30"})}</Tag>
-                            <Truncate text={t("addon_pay.cost_in_week", {value: "0.40"}).replace("!", "$")}/>
-                        </div>}
+                            <Truncate text={t("addon_pay.cost_in_week", {value: "0.40"}).replace("!", "$")} />
+                        </div>
+                    }
                     className={styles["offer-modal__picker"]}
                     titleClassName={styles["offer-modal__picker-title"]}
                     contentClassName={styles["offer-modal__picker-content"]}
@@ -85,7 +84,10 @@ const OfferModal = forwardRef<ModalActions, OfferModalProps>((props, ref) => {
                 <Actions
                     primaryLabel={t("addon_pay.modals.offer.primary_action")}
                     secondaryLabel={t("addon_pay.modals.offer.secondary_action")}
-                    description={t("addon_pay.modals.offer.description", {name: t("addon_pay.ext_name")}).replace('!', '$')}
+                    description={t("addon_pay.modals.offer.description", {name: t("addon_pay.ext_name")}).replace(
+                        "!",
+                        "$"
+                    )}
                     onPrimaryClick={handlePrimaryAction}
                     onSecondaryClick={handleSecondaryAction}
                 />

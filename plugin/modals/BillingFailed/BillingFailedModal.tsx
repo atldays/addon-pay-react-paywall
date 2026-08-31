@@ -15,16 +15,15 @@ import {
     ModalProps,
     Scroll,
     Status,
-    StatusType, Subtitle
+    StatusType,
+    Subtitle,
 } from "../../components";
 
 import {useAddonPay} from "../../provider";
 
 import {SubscriptionStatus} from "../../types";
 
-export interface BillingFailedModalProps extends Partial<ModalProps> {
-
-}
+export interface BillingFailedModalProps extends Partial<ModalProps> {}
 
 const BillingFailedModal = forwardRef<ModalActions, BillingFailedModalProps>((props, ref) => {
     const {t} = useLocale();
@@ -45,15 +44,14 @@ const BillingFailedModal = forwardRef<ModalActions, BillingFailedModalProps>((pr
 
     return (
         <Modal {...props} onClose={handleClose} ref={setModalRef}>
-
             <Scroll top={50}>
-                <Status bottom={11} text={t("addon_pay.tags.payment_needs_attention")} type={StatusType.Error}/>
+                <Status bottom={11} text={t("addon_pay.tags.payment_needs_attention")} type={StatusType.Error} />
 
-                <Title bottom={22} text={t("addon_pay.modals.billing_failed.title")}/>
+                <Title bottom={22} text={t("addon_pay.modals.billing_failed.title")} />
 
-                <Subtitle bottom={23} text={t("addon_pay.modals.billing_failed.subtitle")}/>
+                <Subtitle bottom={23} text={t("addon_pay.modals.billing_failed.subtitle")} />
 
-                <FeaturesList bottom={23}/>
+                <FeaturesList bottom={23} />
 
                 <Actions
                     primaryLabel={t("addon_pay.modals.billing_failed.primary_action")}

@@ -1,6 +1,6 @@
 .features-list {
   display: grid;
-  grid-template-columns:  minmax(200px, 1fr) minmax(200px, 1fr);
+  grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
   justify-content: center;
   gap: 8px 30px;
   padding: 0 20px;
@@ -29,6 +29,6 @@
   &__title {
     font-size: 14px;
     line-height: 18px;
-    color: var(--addon-pay-feature-title-color, #E2E2E2);
+    color: var(--addon-pay-feature-title-color, #e2e2e2);
   }
 }
