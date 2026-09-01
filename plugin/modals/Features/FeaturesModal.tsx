@@ -41,7 +41,7 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
                 ? t("addon_pay.tags.yearly_plan_renews", {date: dateString, value: "29.99"}).replace("!", "$")
                 : t("addon_pay.tags.monthly_plan_renews", {date: dateString});
         }
-    }, [pro]);
+    }, [pro, t]);
 
     const features = useMemo(() => {
         return Array.from({length: featuresCount}, (_, index) => ({
@@ -50,12 +50,12 @@ const FeaturesModal = forwardRef<ModalActions, FeaturesModalProps>((props, ref) 
             // @ts-expect-error -- Locale keys are generated dynamically.
             description: t(`addon_pay.feature_${index + 1}.description`),
         }));
-    }, []);
+    }, [featuresCount, t]);
 
     const handleCancel = useCallback(() => {
         modalRef.current?.close();
         beforeCancelModal.current?.open();
-    }, []);
+    }, [modalRef]);
 
     return (
         <>

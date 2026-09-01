@@ -35,6 +35,8 @@ const Provider = (props: ProviderProps) => {
 
     const [paywallModalType, setPaywallModalType] = useState<string>(PaywallModalType.Default);
 
+    const storageState = useSubscriptionStorage();
+
     const {
         status,
         gift,
@@ -45,8 +47,9 @@ const Provider = (props: ProviderProps) => {
         lastShowModalAt,
         changeStatus,
         renewAfterEnd,
-        ...other
-    } = useSubscriptionStorage();
+        email,
+        update,
+    } = storageState;
 
     const {currentTime} = useCurrentTime();
 
@@ -83,6 +86,8 @@ const Provider = (props: ProviderProps) => {
     const proDiffDays = useMemo(() => {
         if (pro) return getDiffDays(pro.endAt, currentTime);
     }, [pro, currentTime]);
+
+    const {billingGrace, billingFailed} = lastShowModalAt || {};
 
     const openPaywall = useCallback((type?: string) => {
         setPaywallModalType(type || PaywallModalType.Default);
@@ -180,34 +185,39 @@ const Provider = (props: ProviderProps) => {
         openPaywall,
     ]);
 
-    const isHasOpenedModal = () => {
+    const hasOpenedModal = useCallback(() => {
         return !!(
             featuresModal.current?.isOpen() ||
             paywallModal.current?.isOpen() ||
             giftModal.current?.isOpen() ||
+            giftEndModal.current?.isOpen() ||
+            trialStartModal.current?.isOpen() ||
             trialModal.current?.isOpen() ||
             trialEndModal.current?.isOpen() ||
+            cancelledModal.current?.isOpen() ||
             billingGraceModal.current?.isOpen() ||
             billingFailedModal.current?.isOpen()
         );
-    };
+    }, []);
 
     useEffect(() => {
-        if (other.email && lastShowModalAt?.trialStart === undefined) {
-            setTimeout(() => {
-                changeStatus(SubscriptionStatus.Trial);
+        if (!email || lastShowModalAt?.trialStart !== undefined) return;
 
-                trialStartModal.current?.open();
-                other.update({lastShowModalAt: {trialStart: currentTime}});
-                confetti({
-                    particleCount: 100,
-                    spread: 90,
-                    origin: {x: 0.5, y: 0.2},
-                    zIndex: 999999999,
-                });
-            }, 2000);
-        }
-    }, [other.email]);
+        const timeoutId = setTimeout(() => {
+            changeStatus(SubscriptionStatus.Trial);
+
+            trialStartModal.current?.open();
+            update({lastShowModalAt: {trialStart: currentTime}});
+            confetti({
+                particleCount: 100,
+                spread: 90,
+                origin: {x: 0.5, y: 0.2},
+                zIndex: 999999999,
+            });
+        }, 2000);
+
+        return () => clearTimeout(timeoutId);
+    }, [changeStatus, currentTime, email, lastShowModalAt?.trialStart, update]);
 
     // Only resetting status to Free if the GIFT, TRIAL PREVIEW or TRIAL has expired
     useEffect(() => {
@@ -236,31 +246,48 @@ const Provider = (props: ProviderProps) => {
         // PRO has expired
         if (status === SubscriptionStatus.Pro && proDiffDays !== undefined && proDiffDays <= -7) {
             changeStatus(SubscriptionStatus.Free);
-            other.update({renewAfterEnd: false});
+            update({renewAfterEnd: false});
             resetPaidOptions().catch(console.error);
         }
-    }, [currentTime]);
+    }, [
+        changeStatus,
+        giftDiffDays,
+        proDiffDays,
+        resetPaidOptions,
+        status,
+        trialDiffDays,
+        trialPreviewDiffDays,
+        update,
+    ]);
 
     useEffect(() => {
         if (proDiffDays === undefined) return;
         if (proDiffDays > 0) return;
 
-        const {billingGrace, billingFailed} = lastShowModalAt || {};
-
         // Billing grace period Modal
         if (proDiffDays > -7 && (!billingGrace || !isSameDay(billingGrace, currentTime))) {
-            if (isHasOpenedModal()) return;
-            other.update({lastShowModalAt: {billingGrace: currentTime}});
-            setTimeout(() => billingGraceModal.current?.open(), 2000);
+            if (hasOpenedModal()) return;
+
+            const timeoutId = setTimeout(() => {
+                update({lastShowModalAt: {billingGrace: currentTime}});
+                billingGraceModal.current?.open();
+            }, 2000);
+
+            return () => clearTimeout(timeoutId);
         }
 
         // Billing failed Modal - only once
         if (proDiffDays <= -7 && !billingFailed) {
-            if (isHasOpenedModal()) return;
-            other.update({lastShowModalAt: {billingFailed: currentTime}});
-            setTimeout(() => billingFailedModal.current?.open(), 2000);
+            if (hasOpenedModal()) return;
+
+            const timeoutId = setTimeout(() => {
+                update({lastShowModalAt: {billingFailed: currentTime}});
+                billingFailedModal.current?.open();
+            }, 2000);
+
+            return () => clearTimeout(timeoutId);
         }
-    }, [currentTime]);
+    }, [billingFailed, billingGrace, currentTime, hasOpenedModal, proDiffDays, update]);
 
     const contextValue = useMemo(
         () => ({
@@ -268,33 +295,9 @@ const Provider = (props: ProviderProps) => {
             openPaywall,
             checkAndOpenPaywall,
             resetPaidOptions,
-
-            status,
-            gift,
-            trialPreview,
-            trial,
-            pro,
-            isSubscribed,
-            lastShowModalAt,
-            changeStatus,
-            renewAfterEnd,
-            ...other,
+            ...storageState,
         }),
-        [
-            action,
-            openPaywall,
-            checkAndOpenPaywall,
-            resetPaidOptions,
-            status,
-            gift,
-            trialPreview,
-            trial,
-            pro,
-            isSubscribed,
-            lastShowModalAt,
-            changeStatus,
-            renewAfterEnd,
-        ]
+        [action, checkAndOpenPaywall, openPaywall, resetPaidOptions, storageState]
     );
 
     return (

@@ -44,7 +44,7 @@ const BeforeCancelModal = forwardRef<ModalActions, BeforeCancelModalProps>((prop
 
     const handlePrimaryAction = useCallback(() => {
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     const handleSecondaryAction = useCallback(() => {
         if (hasDiscount) {
@@ -55,7 +55,7 @@ const BeforeCancelModal = forwardRef<ModalActions, BeforeCancelModalProps>((prop
         }
 
         setTimeout(() => modalRef.current?.close(), 300);
-    }, [hasDiscount]);
+    }, [hasDiscount, modalRef, update]);
 
     return (
         <>

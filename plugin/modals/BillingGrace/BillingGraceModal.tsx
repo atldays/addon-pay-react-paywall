@@ -38,7 +38,7 @@ const BillingGraceModal = forwardRef<ModalActions, BillingFailedModalProps>((pro
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro);
         modalRef.current?.close();
-    }, []);
+    }, [changeStatus, modalRef]);
 
     const handleSecondaryAction = useCallback(() => {
         // modalRef.current?.close();

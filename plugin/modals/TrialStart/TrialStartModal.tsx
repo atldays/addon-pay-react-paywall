@@ -47,7 +47,7 @@ const TrialStartModal = forwardRef<ModalActions, TrialStartModalProps>((props, r
             const value = choice("addon_pay.days_with_count", 7, {count: "7"});
             return t("addon_pay.tags.trial_remaining", {value});
         }
-    }, [trial, trialPreview, currentTime]);
+    }, [choice, currentTime, status, t, trial, trialPreview]);
 
     const subtitleText = useMemo(() => {
         if (status === SubscriptionStatus.Trial && trial) {
@@ -59,11 +59,11 @@ const TrialStartModal = forwardRef<ModalActions, TrialStartModalProps>((props, r
             // const date = format(trialPreview.endAt, 'MMMM d, yyyy');
             return t("addon_pay.modals.trial_start.subtitle", {date, name: t("addon_pay.ext_name")});
         }
-    }, [trial, trialPreview, currentTime]);
+    }, [status, t, trial, trialPreview]);
 
     const handlePrimaryAction = useCallback(() => {
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     return (
         <Modal {...props} ref={setModalRef}>

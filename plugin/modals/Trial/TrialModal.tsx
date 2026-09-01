@@ -51,7 +51,7 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
             const days = choice("addon_pay.days", count);
             return t("addon_pay.modals.trial_preview.subtitle", {count, days}).replace("!", "$");
         }
-    }, [trial, trialPreview, status, currentTime]);
+    }, [choice, currentTime, status, t, trial, trialPreview]);
 
     const statusText = useMemo(() => {
         if (status === SubscriptionStatus.Trial && trial) {
@@ -65,7 +65,7 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
                 value: choice("addon_pay.days_with_count", count, {count}),
             });
         }
-    }, [trial, trialPreview, status, currentTime]);
+    }, [choice, currentTime, status, t, trial, trialPreview]);
 
     const descriptionText = useMemo(() => {
         const name = t("addon_pay.ext_name");
@@ -77,17 +77,17 @@ const TrialModal = forwardRef<ModalActions, TrialModalProps>((props, ref) => {
         if (status === SubscriptionStatus.TrialPreview && trialPreview) {
             return t("addon_pay.modals.trial_preview.description", {name}).replace("!", "$");
         }
-    }, [trial, trialPreview, status, currentTime]);
+    }, [status, t, trial, trialPreview]);
 
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro, pickersRef.current?.getValue());
         modalRef.current?.close();
-    }, []);
+    }, [changeStatus, modalRef]);
 
     const handleSecondaryAction = useCallback(() => {
         openAddEmailPage().catch(console.error);
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     return (
         <Modal {...props} ref={setModalRef}>

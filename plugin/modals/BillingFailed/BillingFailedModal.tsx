@@ -35,12 +35,12 @@ const BillingFailedModal = forwardRef<ModalActions, BillingFailedModalProps>((pr
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro);
         modalRef.current?.close();
-    }, []);
+    }, [changeStatus, modalRef]);
 
     const handleClose = useCallback(() => {
         changeStatus(SubscriptionStatus.Free);
         resetPaidOptions().catch(console.error);
-    }, [resetPaidOptions]);
+    }, [changeStatus, resetPaidOptions]);
 
     return (
         <Modal {...props} onClose={handleClose} ref={setModalRef}>

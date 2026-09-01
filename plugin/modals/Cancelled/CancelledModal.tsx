@@ -41,12 +41,12 @@ const CancelledModal = forwardRef<ModalActions, BeforeCancelModalProps>((props, 
                 ? t("addon_pay.tags.yearly_plan_access_until", {date: dateString, value: "29.99"}).replace("!", "$")
                 : t("addon_pay.tags.monthly_plan_access_until", {date: dateString});
         }
-    }, [pro]);
+    }, [pro, t]);
 
     const handlePrimaryAction = useCallback(() => {
         modalRef.current?.close();
         update({renewAfterEnd: true});
-    }, []);
+    }, [modalRef, update]);
 
     return (
         <>

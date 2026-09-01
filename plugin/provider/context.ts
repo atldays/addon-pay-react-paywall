@@ -29,9 +29,8 @@ export const useSubscriptionStorage = () => {
 
     const requestId = useRef(0);
 
-    const isSubscribed = useMemo(() => {
-        return !!storage?.status && storage.status !== SubscriptionStatus.Free;
-    }, [storage, loading]);
+    const isSubscribed = !!storage?.status && storage.status !== SubscriptionStatus.Free;
+    const trialPreviewStartAt = storage?.trialPreview?.startAt;
 
     const changeStatus = useCallback(
         (status: SubscriptionStatus, plan?: SubscriptionPlan) => {
@@ -59,7 +58,7 @@ export const useSubscriptionStorage = () => {
             }
 
             if (status === SubscriptionStatus.Trial) {
-                const currentStartAt = storage?.trialPreview?.startAt || startAt;
+                const currentStartAt = trialPreviewStartAt || startAt;
 
                 value[SubscriptionStatus.Trial] = {
                     startAt: currentStartAt,
@@ -69,7 +68,7 @@ export const useSubscriptionStorage = () => {
 
             subscriptionStorage.update(value).catch(e => console.error("Failed to update subscription data", e));
         },
-        [storage]
+        [trialPreviewStartAt]
     );
 
     const update = useCallback((value: Partial<SubscriptionStorageContract>) => {
@@ -107,11 +106,14 @@ export const useSubscriptionStorage = () => {
         };
     }, []);
 
-    return {
-        ...storage,
-        isSubscribed,
-        loading,
-        changeStatus,
-        update,
-    };
+    return useMemo(
+        () => ({
+            ...storage,
+            isSubscribed,
+            loading,
+            changeStatus,
+            update,
+        }),
+        [changeStatus, isSubscribed, loading, storage, update]
+    );
 };

@@ -41,12 +41,12 @@ const GiftEndModal = forwardRef<ModalActions, GiftEndModalProps>((props, ref) =>
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro, pickersRef.current?.getValue());
         modalRef.current?.close();
-    }, []);
+    }, [changeStatus, modalRef]);
 
     const handleSecondaryAction = useCallback(() => {
         openAddEmailPage().catch(console.error);
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     return (
         <Modal {...props} ref={setModalRef}>

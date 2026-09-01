@@ -38,17 +38,17 @@ const GiftStartModal = forwardRef<ModalActions, GiftStartModalProps>((props, ref
             const days = choice("addon_pay.days_with_count", count, {count});
             return t("addon_pay.tags.gift_remaining", {value: days});
         }
-    }, [gift, currentTime]);
+    }, [choice, currentTime, gift, t]);
 
     const subtitleText = useMemo(() => {
         const name = t("addon_pay.ext_name");
         const days = choice("addon_pay.days_with_count", 1, {count: 1});
         return t("addon_pay.modals.gift_start.subtitle", {days, name});
-    }, []);
+    }, [choice, t]);
 
     const handlePrimaryAction = useCallback(() => {
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     return (
         <Modal {...props} ref={setModalRef}>

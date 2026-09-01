@@ -63,7 +63,7 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
         } else {
             return t("addon_pay.modals.trial_end.tag");
         }
-    }, [isTrialPreviewEnd]);
+    }, [choice, isTrialPreviewEnd, t]);
 
     const titleText = useMemo(() => {
         if (isTrialPreviewEnd) {
@@ -71,7 +71,7 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
         } else {
             return t("addon_pay.modals.trial_end.title");
         }
-    }, [isTrialPreviewEnd]);
+    }, [isTrialPreviewEnd, t]);
 
     const subtitleText = useMemo(() => {
         if (isTrialPreviewEnd && trialPreviewDiffDays !== undefined) {
@@ -79,7 +79,7 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
             const days = choice("addon_pay.days", count);
             return t("addon_pay.modals.trial_preview_end.subtitle", {count, days});
         }
-    }, [isTrialPreviewEnd, trialPreviewDiffDays]);
+    }, [choice, isTrialPreviewEnd, t, trialPreviewDiffDays]);
 
     const descriptionText = useMemo(() => {
         return (
@@ -87,17 +87,17 @@ const TrialEndModal = forwardRef<ModalActions, TrialEndModalProps>((props, ref) 
                 ? t("addon_pay.modals.trial_preview_end.description", {name: t("addon_pay.ext_name")})
                 : t("addon_pay.modals.trial_end.description", {name: t("addon_pay.ext_name")})
         ).replace("!", "$");
-    }, [isTrialPreviewEnd]);
+    }, [isTrialPreviewEnd, t]);
 
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro, pickersRef.current?.getValue());
         modalRef.current?.close();
-    }, []);
+    }, [changeStatus, modalRef]);
 
     const handleSecondaryAction = useCallback(() => {
         openAddEmailPage().catch(console.error);
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     return (
         <Modal {...props} ref={setModalRef}>

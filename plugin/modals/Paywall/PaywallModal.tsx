@@ -82,7 +82,7 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
         }
 
         return t("addon_pay.modals.paywall.default.secondary_action");
-    }, [status, gift, trialPreview, pro, currentTime]);
+    }, [currentTime, pro, t, trial, trialPreview]);
 
     const description = useMemo(() => {
         if (!trialPreview && !trial && !pro) {
@@ -96,12 +96,12 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
             "!",
             "$"
         );
-    }, [trialPreview, trial, pro, currentTime]);
+    }, [currentTime, pro, t, trial, trialPreview]);
 
     const primaryActionHandle = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro, pickersRef.current?.getValue());
         modalRef.current?.close();
-    }, []);
+    }, [changeStatus, modalRef]);
 
     const secondaryActionHandle = useCallback(() => {
         if (!status || status === SubscriptionStatus.Free) {
@@ -123,7 +123,7 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
                 setTimeout(() => modalRef.current?.close(), 300);
             }
         }
-    }, [status, gift, trialPreview, trial]);
+    }, [changeStatus, gift, modalRef, status, trial, trialPreview]);
 
     const closeHandle = useCallback(() => {
         if (!gift && !trialPreview && !trial && !pro) {
@@ -135,7 +135,7 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
 
             setTimeout(() => modalRef.current?.close(), 300);
         }
-    }, [gift, trialPreview, trial, pro]);
+    }, [changeStatus, gift, modalRef, pro, trial, trialPreview]);
 
     useEffect(() => {
         // @ts-expect-error -- Locale keys are selected dynamically by the modal type.
@@ -145,7 +145,7 @@ const PaywallModal = forwardRef<ModalActions, PaywallModalProps>((props, ref) =>
 
         setTitle(title);
         setSubtitle(subtitle);
-    }, [type]);
+    }, [t, type]);
 
     return (
         <>

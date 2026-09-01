@@ -15,7 +15,7 @@ const TryAgainModal = forwardRef<ModalActions, TryAgainModalProps>((props, ref) 
 
     const handlePrimaryAction = useCallback(() => {
         modalRef.current?.close();
-    }, []);
+    }, [modalRef]);
 
     return (
         <Modal {...props} ref={setModalRef}>

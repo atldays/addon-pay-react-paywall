@@ -48,17 +48,17 @@ const GiftModal = forwardRef<ModalActions, GiftModalProps>((props, ref) => {
             const days = choice("addon_pay.days_with_count", count, {count});
             return t("addon_pay.tags.gift_remaining", {value: days});
         }
-    }, [gift, currentTime]);
+    }, [choice, currentTime, gift, t]);
 
     const actionText = useMemo(() => {
         const value = plan === SubscriptionPlan.Yearly ? "29.99/year" : "4.99/month";
         return t("addon_pay.modals.gift.primary_action", {value});
-    }, [plan]);
+    }, [plan, t]);
 
     const handlePrimaryAction = useCallback(() => {
         changeStatus(SubscriptionStatus.Pro, plan);
         modalRef.current?.close();
-    }, [plan]);
+    }, [changeStatus, modalRef, plan]);
 
     return (
         <Modal {...props} ref={setModalRef}>

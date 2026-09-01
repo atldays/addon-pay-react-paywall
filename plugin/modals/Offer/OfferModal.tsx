@@ -42,12 +42,13 @@ const OfferModal = forwardRef<ModalActions, OfferModalProps>((props, ref) => {
     const handlePrimaryAction = useCallback(() => {
         update({hasDiscount: true});
         modalRef.current?.close();
-    }, []);
+    }, [modalRef, update]);
 
     const handleSecondaryAction = useCallback(() => {
         update({renewAfterEnd: false});
+        onSecondaryClick?.();
         setTimeout(() => modalRef.current?.close(), 300);
-    }, [onSecondaryClick]);
+    }, [modalRef, onSecondaryClick, update]);
 
     return (
         <Modal {...other} ref={setModalRef}>

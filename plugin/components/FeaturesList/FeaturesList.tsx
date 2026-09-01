@@ -35,7 +35,7 @@ const FeaturesList = (props: FeaturesListProps) => {
         const leftCount = Math.ceil(features.length / 2);
 
         return [features.slice(0, leftCount), features.slice(leftCount)];
-    }, []);
+    }, [shortFeaturesCount, t]);
 
     const iconName = type === FeaturesListType.Success ? icons?.successFeature : icons?.errorFeature;
 
