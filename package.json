@@ -1,6 +1,6 @@
 {
   "name": "@addon-lab/plugin-paywall",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React Paywall for Addon Bone",
   "keywords": [
     "adnbn",
